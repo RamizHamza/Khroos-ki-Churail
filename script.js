@@ -102,6 +102,21 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        // Leaving the birthday-song page automatically restores background music.
+        if (currentScene === "birthday-song" && sceneName !== "birthday-song") {
+            if (birthdayMusic && !birthdayMusic.paused) {
+                birthdayMusic.pause();
+            }
+
+            birthdaySongPlaying = false;
+
+            if (birthdaySongBtn) {
+                birthdaySongBtn.innerHTML = "▶ Play Birthday Song";
+            }
+
+            startBackgroundMusic();
+        }
+
         scenes.forEach(scene => {
             scene.classList.remove("active");
         });
@@ -134,18 +149,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (sceneName === "birthday-intro") {
-
+            // Show the intro screen first. The video starts ONLY after Watch is pressed.
             if (birthdayIntroVideo) {
+                birthdayIntroVideo.pause();
                 birthdayIntroVideo.currentTime = 0;
             }
 
-            setTimeout(() => {
-                try {
-                    birthdayIntroVideo?.play();
-                } catch (error) {
-                    console.log("Video autoplay blocked.");
-                }
-            }, 400);
+            document
+                .querySelector(".video-wrapper")
+                ?.classList.remove("video-playing");
         }
 
         if (sceneName === "birthday-message") {
@@ -464,42 +476,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       MUSIC
+       MUSIC — BACKGROUND / BIRTHDAY / VIDEO
        ===================================================== */
 
     function startBackgroundMusic() {
 
         if (!backgroundMusic) return;
+        if (birthdaySongPlaying) return;
 
-        if (musicStarted) return;
+        backgroundMusic.volume = 0.35;
 
-        backgroundMusic.volume = 1;
-
-        const promise =
-            backgroundMusic.play();
+        const promise = backgroundMusic.play();
 
         if (promise !== undefined) {
-
             promise
                 .then(() => {
                     musicStarted = true;
                     updateMusicIcon();
                 })
                 .catch(() => {
-                    console.log(
-                        "Music waiting for user interaction."
-                    );
+                    // Modern mobile browsers may block audible autoplay.
+                    // The first normal user interaction will start it.
                 });
         }
     }
 
+    function pauseBackgroundMusic() {
+
+        if (!backgroundMusic) return;
+
+        backgroundMusic.pause();
+        updateMusicIcon();
+    }
+
+    // Try immediately. If the browser blocks audible autoplay,
+    // the first user interaction starts the music automatically.
+    startBackgroundMusic();
 
     document.addEventListener(
-        "click",
+        "pointerdown",
         () => {
-            startBackgroundMusic();
+            if (!musicStarted && currentScene !== "birthday-intro") {
+                startBackgroundMusic();
+            }
         },
-        { once: true }
+        { once: true, passive: true }
     );
 
 
@@ -517,17 +538,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     backgroundMusic &&
                     !backgroundMusic.paused
                 ) {
-
-                    backgroundMusic.pause();
-
-                } else if (backgroundMusic) {
-
-                    backgroundMusic.play()
-                        .then(() => {
-                            musicStarted = true;
-                            updateMusicIcon();
-                        })
-                        .catch(() => {});
+                    pauseBackgroundMusic();
+                } else {
+                    startBackgroundMusic();
                 }
 
                 updateMusicIcon();
@@ -544,11 +557,8 @@ document.addEventListener("DOMContentLoaded", () => {
             backgroundMusic &&
             !backgroundMusic.paused
         ) {
-
             musicControl.textContent = "🔊";
-
         } else {
-
             musicControl.textContent = "🔇";
         }
     }
@@ -568,10 +578,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (birthdayMusic.paused) {
 
-                    backgroundMusic?.pause();
+                    pauseBackgroundMusic();
 
                     birthdayMusic.currentTime = 0;
-                    birthdayMusic.volume = 1;
+                    birthdayMusic.volume = 0.8;
 
                     birthdayMusic.play()
                         .then(() => {
@@ -598,6 +608,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     birthdaySongBtn.innerHTML =
                         "▶ Play Birthday Song";
+
+                    // Birthday song stopped → background music resumes automatically.
+                    startBackgroundMusic();
                 }
 
             }
@@ -625,22 +638,73 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       PAUSE MUSIC WHEN VIDEO PLAYS
+       BIRTHDAY INTRO VIDEO
        ===================================================== */
+
+    const videoWrapper =
+        document.querySelector(".video-wrapper");
+
+    const watchIntroBtn =
+        document.getElementById("watchIntroBtn");
+
+    const skipIntroBtn =
+        document.getElementById("skipIntroBtn");
+
+    function finishBirthdayIntro() {
+
+        if (birthdayIntroVideo) {
+            birthdayIntroVideo.pause();
+            birthdayIntroVideo.currentTime = 0;
+        }
+
+        videoWrapper?.classList.remove("video-playing");
+
+        startBackgroundMusic();
+
+        showScene("birthday-message");
+    }
+
+    watchIntroBtn?.addEventListener(
+        "click",
+        () => {
+
+            if (!birthdayIntroVideo) return;
+
+            // Video has its own sound, so background music must stop.
+            pauseBackgroundMusic();
+
+            birthdayIntroVideo.currentTime = 0;
+
+            videoWrapper?.classList.add("video-playing");
+
+            birthdayIntroVideo.play()
+                .catch(() => {
+                    showToast("Tap Watch again to play the intro video 🎬");
+                });
+        }
+    );
+
+    skipIntroBtn?.addEventListener(
+        "click",
+        () => {
+            finishBirthdayIntro();
+        }
+    );
 
     if (birthdayIntroVideo) {
 
         birthdayIntroVideo.addEventListener(
             "play",
             () => {
-                backgroundMusic?.pause();
+                pauseBackgroundMusic();
+                videoWrapper?.classList.add("video-playing");
             }
         );
 
         birthdayIntroVideo.addEventListener(
             "ended",
             () => {
-                startBackgroundMusic();
+                finishBirthdayIntro();
             }
         );
     }
@@ -658,16 +722,14 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             () => {
 
-                const image =
-                    card.dataset.image;
+                const image = card.dataset.image;
 
-                if (!image) return;
+                if (!image || !photoLightbox || !lightboxImage) return;
 
                 lightboxImage.src = image;
 
-                photoLightbox.classList.add(
-                    "active"
-                );
+                // CSS uses .show for modal visibility.
+                photoLightbox.classList.add("show");
 
                 photoLightbox.setAttribute(
                     "aria-hidden",
@@ -680,20 +742,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function closePhoto() {
 
-        photoLightbox.classList.remove(
-            "active"
-        );
+        if (!photoLightbox) return;
+
+        photoLightbox.classList.remove("show");
 
         photoLightbox.setAttribute(
             "aria-hidden",
             "true"
         );
 
-        lightboxImage.src = "";
+        if (lightboxImage) {
+            lightboxImage.src = "";
+        }
     }
 
 
     closePhotoLightbox?.addEventListener(
+        "click",
+        closePhoto
+    );
+
+    // Tap the enlarged photo itself to return to its normal size.
+    lightboxImage?.addEventListener(
         "click",
         closePhoto
     );
@@ -703,10 +773,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "click",
         event => {
 
-            if (
-                event.target ===
-                photoLightbox
-            ) {
+            if (event.target === photoLightbox) {
                 closePhoto();
             }
 
@@ -726,26 +793,30 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             () => {
 
-                const video =
-                    card.dataset.video;
+                const video = card.dataset.video;
 
-                if (!video) return;
+                if (!video || !videoModal || !memoryVideo) return;
 
+                // Make sure only the selected memory video plays.
+                backgroundMusic?.pause();
+                birthdayMusic?.pause();
+
+                memoryVideo.pause();
                 memoryVideo.src = video;
+                memoryVideo.load();
 
-                videoModal.classList.add(
-                    "active"
-                );
+                // CSS uses .show for modal visibility.
+                videoModal.classList.add("show");
 
                 videoModal.setAttribute(
                     "aria-hidden",
                     "false"
                 );
 
-                backgroundMusic?.pause();
-
                 memoryVideo.play()
-                    .catch(() => {});
+                    .catch(() => {
+                        showToast("Tap the video to play it 🎬");
+                    });
             }
         );
     });
@@ -753,14 +824,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function closeVideo() {
 
+        if (!videoModal || !memoryVideo) return;
+
         memoryVideo.pause();
-
         memoryVideo.currentTime = 0;
-        memoryVideo.src = "";
+        memoryVideo.removeAttribute("src");
+        memoryVideo.load();
 
-        videoModal.classList.remove(
-            "active"
-        );
+        videoModal.classList.remove("show");
 
         videoModal.setAttribute(
             "aria-hidden",
@@ -776,15 +847,18 @@ document.addEventListener("DOMContentLoaded", () => {
         closeVideo
     );
 
+    // Tap the playing video to close it and return to the cards.
+    memoryVideo?.addEventListener(
+        "click",
+        closeVideo
+    );
+
 
     videoModal?.addEventListener(
         "click",
         event => {
 
-            if (
-                event.target ===
-                videoModal
-            ) {
+            if (event.target === videoModal) {
                 closeVideo();
             }
 
@@ -998,10 +1072,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Cake successfully cut! 🍰 One piece reserved for Chuzii. ❤️";
 
             createConfetti(60);
+            createHearts(18);
 
+            // Let the knife/cake animation finish before moving to the slice scene.
             setTimeout(() => {
                 showScene("cake-slice");
-            }, 1800);
+            }, 2600);
         }
     );
 
@@ -1019,7 +1095,7 @@ document.addEventListener("DOMContentLoaded", () => {
             giftOpened = true;
 
             giftBox?.classList.add(
-                "opened"
+                "gift-open"
             );
 
             giftReveal?.classList.add(
@@ -1299,9 +1375,47 @@ Happy Birthday, Chuzii. ❤️
 
 
     /* =====================================================
+       FINAL ACTION BUTTONS
+       ===================================================== */
+
+    document.getElementById("replayBtn")?.addEventListener(
+        "click",
+        () => {
+            window.location.reload();
+        }
+    );
+
+    document.getElementById("websiteOrderBtn")?.addEventListener(
+        "click",
+        () => {
+            const phone = "923297611569";
+            const message =
+                "Assalamualaikum, mujhe custom website on demand banwani hai. Please details share karein.";
+            const whatsappUrl = [
+                "https:",
+                "",
+                "wa.me",
+                phone
+            ].join("/") + "?text=" + encodeURIComponent(message);
+
+            window.open(
+                whatsappUrl,
+                "_blank",
+                "noopener,noreferrer"
+            );
+        }
+    );
+
+
+    /* =====================================================
        INITIAL STATE
        ===================================================== */
 
     updateMusicIcon();
+
+    // Also request playback after DOM is ready.
+    // If the browser blocks sound autoplay, the first user tap
+    // (Unlock/Continue/etc.) starts the background music automatically.
+    startBackgroundMusic();
 
 });
