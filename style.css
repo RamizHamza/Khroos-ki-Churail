@@ -2995,3 +2995,195 @@ h2 {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* =========================================================
+   CHURAIL FIXES — VIDEO / MODAL / CAKE / FINAL BUTTONS
+   ========================================================= */
+
+/* Intro overlay stays visible until Watch is pressed. */
+.video-wrapper.video-playing .video-overlay {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* When video is playing, keep the actual video fully visible. */
+.video-wrapper.video-playing .main-video {
+    cursor: pointer;
+}
+
+/* Modal fix: JS uses .show, matching the existing CSS. */
+.modal.show {
+    z-index: 99999;
+}
+
+/* Enlarge memory videos cleanly on mobile and desktop. */
+.modal video {
+    width: min(1000px, 92vw);
+    max-width: 92vw;
+    max-height: 82vh;
+    object-fit: contain;
+}
+
+/* Candle flame extinguishing animation. */
+.flame.extinguished {
+    animation: candleBlowOut 0.55s ease forwards !important;
+}
+
+@keyframes candleBlowOut {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+        filter: drop-shadow(0 0 10px #ffb703);
+    }
+
+    55% {
+        opacity: 0.55;
+        transform: translateX(-50%) translateY(-8px) scale(0.7);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-15px) scale(0);
+        filter: none;
+    }
+}
+
+/* Realistic-looking knife animation over the SAME cake. */
+.luxury-cake::after {
+    content: "🔪";
+    position: absolute;
+    z-index: 20;
+    top: 55px;
+    left: -80px;
+    font-size: 64px;
+    opacity: 0;
+    pointer-events: none;
+    transform: rotate(-25deg);
+}
+
+.luxury-cake.cake-cut::after {
+    animation: cakeKnifeCut 2.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes cakeKnifeCut {
+    0% {
+        opacity: 0;
+        left: -80px;
+        top: 30px;
+        transform: rotate(-25deg) scale(0.85);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    45% {
+        left: 125px;
+        top: 55px;
+        transform: rotate(18deg) scale(1);
+    }
+
+    62% {
+        left: 135px;
+        top: 105px;
+        transform: rotate(18deg) scale(1);
+    }
+
+    78% {
+        left: 135px;
+        top: 55px;
+        transform: rotate(18deg) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        left: 320px;
+        top: 35px;
+        transform: rotate(25deg) scale(0.9);
+    }
+}
+
+/* Slight movement of the cake layers while cutting. */
+.luxury-cake.cake-cut .cake-top {
+    animation: cakeTopCut 1.7s ease forwards;
+}
+
+.luxury-cake.cake-cut .layer-one,
+.luxury-cake.cake-cut .layer-two,
+.luxury-cake.cake-cut .layer-three {
+    animation: cakeLayersCut 1.7s ease forwards;
+}
+
+@keyframes cakeTopCut {
+    0%, 45% { transform: translateX(0); }
+    70% { transform: translateX(5px); }
+    100% { transform: translateX(7px); }
+}
+
+@keyframes cakeLayersCut {
+    0%, 45% { transform: translateX(0); }
+    70% { transform: translateX(4px); }
+    100% { transform: translateX(6px); }
+}
+
+/* Final Replay + Custom Website buttons. */
+.final-actions {
+    width: min(560px, 92vw);
+    margin: 28px auto 0;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.final-actions .choice-btn {
+    min-width: 190px;
+}
+
+@media (max-width: 600px) {
+    .final-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .final-actions .choice-btn {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .luxury-cake::after {
+        font-size: 52px;
+    }
+}
+
+
+/* =========================================
+   INTRO VIDEO BUTTONS
+   ========================================= */
+
+.intro-video-actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18px;
+    position: relative;
+    z-index: 20;
+}
+
+.intro-video-actions .choice-btn {
+    min-width: 140px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .intro-video-actions {
+        margin-top: 14px;
+    }
+
+    .intro-video-actions .choice-btn {
+        min-width: 130px;
+        padding: 12px 24px;
+    }
+}
