@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <meta
+        name="description"
+        content="A special birthday experience created with love for Maryam Irfan."
+    >
+
+    <title>🎁 A Gift for Churail</title>
+
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Great+Vibes&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         GLOBAL BACKGROUND
+    ====================================================== -->
+
+    <div id="background">
+        <div class="aurora aurora-one"></div>
+        <div class="aurora aurora-two"></div>
+        <div class="aurora aurora-three"></div>
+
+        <div id="stars"></div>
+        <div id="particles"></div>
+    </div>
+
+
+    <!-- =====================================================
+         RL WATERMARK
+    ====================================================== -->
+
+    <div class="rl-watermark" aria-hidden="true">
+        RL
+    </div>
+
+
+    <!-- =====================================================
+         MUSIC
+    ====================================================== -->
+
+    <audio
+        id="backgroundMusic"
+        loop
+        preload="auto"
+    >
+        <source src="background-song.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio
+        id="birthdayMusic"
+        preload="auto"
+    >
+        <source src="happy-birthday-chuzii.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <!-- =====================================================
+         MAIN APP
+    ====================================================== -->
+
+    <main id="app">
+
+
+        <!-- =================================================
+             SCENE 00 — INTRO
+        ================================================== -->
+
+        <section
+            class="scene active"
+            id="scene-intro"
+            data-scene="intro"
+        >
+
+            <div class="intro-content">
+
+                <div class="intro-logo">
+                    <span>RL</span>
+                </div>
+
+                <p class="eyebrow">
+                    PRESENTS
+                </p>
+
+                <h1 class="intro-title">
+                    Something
+                    <span>Special</span>
+                </h1>
+
+                <p class="intro-subtitle">
+                    is being prepared...
+                </p>
+
+                <div class="loading-line">
+                    <div id="loadingProgress"></div>
+                </div>
+
+                <p
+                    id="loadingText"
+                    class="loading-text"
+                >
+                    Preparing something unforgettable...
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCENE 01 — PASSWORD
+        ================================================== -->
+
+        <section
+            class="scene"
+            id="scene-password"
+            data-scene="password"
+        >
+
+            <div class="scene-card password-card">
+
+                <div class="lock-icon">
+                    🔐
+                </div>
+
+                <p class="eyebrow">
+                    PRIVATE ACCESS
+                </p>
+
+                <h2>
+                    Before We Begin...
+                </h2>
+
+                <p class="scene-description">
+                    This little world was created
+                    for one very special person. ❤️
+                </p>
+
+                <div class="password-box">
+
+                    <input
+                        type="password"
+                        id="passwordInput"
+                        placeholder="Enter the secret password"
+                        autocomplete="off"
+                        maxlength="30"
+                    >
+
+                    <button
+                        class="password-toggle"
+                        id="passwordToggle"
+                        type="button"
+                        aria-label="Show password"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+                <button
+                    class="primary-btn"
+                    id="unlockBtn"
+                    type="button"
+                >
+                    <span>Unlock My Gift</span>
+                    <span>→</span>
+                </button>
+
+                <button
+                    class="secondary-btn"
+                    id="passwordNoBtn"
+                    type="button"
+                >
+                    No, I Forgot 😭
+                </button>
+
+                <div
+                    class="hint-box"
+                    id="hintBox"
+                >
+                    <span>💡</span>
+
+                    <p>
+                        Hint:
+                        <span>
+                            A king never forgets his crown... 👑
+                        </span>
+                    </p>
+                </div>
+
+                <p
+                    class="feedback-message"
+                    id="passwordFeedback"
+                ></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCENE 02 — IDENTITY CHECK
+        ================================================== -->
+
+        <section
+            class="scene"
+            id="scene-identity"
+            data-scene="identity"
+        >
+
+            <div class="scene-card">
+
+                <div class="verification-icon">
+                    ✨
+                </div>
+
+                <p class="eyebrow">
+                    IDENTITY CHECK
+                </p>
+
+                <h2>
+                    Are You Really
+                    <span class="script-name">
+                        Chuzii?
+                    </span>
+                </h2>
+
+                <p class="scene-description">
+                    Be honest...
+                    Mr Khroos is watching. 👀
+                </p>
+
+                <div class="choice-buttons">
+
+                    <button
+                        class="choice-btn yes-btn"
+                        data-next="welcome"
+                        type="button"
+                    >
+                        <span>Yes ❤️</span>
+                    </button>
+
+                    <button
+                        class="choice-btn no-btn"
+                        data-no-response="identity"
+                        type="button"
+                    >
+                        <span>No 😏</span>
+                    </button>
+
+                </div>
+
+                <p
+                    class="no-response"
+                    id="no-response-identity"
+                ></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCENE 03 — WELCOME
+        ================================================== -->
+
+        <section
+            class="scene"
+            id="scene-welcome"
+            data-scene="welcome"
+        >
+
+            <div class="welcome-content">
+
+                <p class="eyebrow">
+                    IDENTITY VERIFIED
+                </p>
+
+                <h1>
+                    Welcome,
+                    <span class="script-name">
+                        Chuzii
+                    </span>
+                </h1>
+
+                <p class="welcome-text">
+                    Your birthday experience
+                    is officially unlocked. ❤️
+                </p>
+
+                <div class="choice-buttons">
+
+                    <button
+                        class="choice-btn yes-btn"
+                        data-next="birthday-intro"
+                        type="button"
+                    >
+                        Continue ❤️
+                    </button>
+
+                    <button
+                        class="choice-btn no-btn"
+                        data-no-response="welcome"
+                        type="button"
+                    >
+                        Not Yet 😒
+                    </button>
+
+                </div>
+
+                <p
+                    class="no-response"
+                    id="no-response-welcome"
+                ></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCENE 04 — BIRTHDAY VIDEO INTRO
+        ================================================== -->
+
+        <section
+            class="scene video-scene"
+            id="scene-birthday-intro"
+            data-scene="birthday-intro"
+        >
+
+            <div class="video-wrapper">
+
+                <video
+                    id="birthdayIntroVideo"
+                    class="main-video"
+                    playsinline
+                    preload="metadata"
+                >
+                    <source
+                        src="birthday-intro.mp4"
+                        type="video/mp4"
+                    >
+                </video>
+
+                <div class="video-overlay">
+
+                    <p class="eyebrow">
+                        A LITTLE SURPRISE
+                    </p>
+
+                    <h2>
+                        This One Is For You ❤️
+                    </h2>
+
+                    <div class="choice-buttons">
+
+                        <button
+                            class="choice-btn yes-btn"
+                            data-next="birthday-message"
+                            type="button"
+                        >
+                            Watch ❤️
+                        </button>
+
+                        <button
+                            class="choice-btn no-btn"
+                            data-no-response="video"
+                            type="button"
+                        >
+                            Skip 😏
+                        </button>
+
+                    </div>
+
+                    <p
+                        class="no-response"
+                        id="no-response-video"
+                    ></p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCENE 05 — BIRTHDAY MESSAGE
+        ================================================== -->
+
+        <section
+            class="scene"
+            id="scene-birthday-message"
+            data-scene="birthday-message"
+        >
+
+            <div class="message-content">
+
+                <p class="eyebrow">
+                    SEPTEMBER 7
+                </p>
+
+                <h1>
+                    Happy Birthday
+                    <span class="script-name">
+                        Chuzii
+                    </span>
+                    ❤️
+                </h1>
+
+                <p class="large-message">
+                    Today isn't just another day...
+                    it's the day someone very special
+                    came into this world.
+                </p>
+
+                <div class="choice-buttons">
+
+                    <button
+                        class="choice-btn yes-btn"
+                        data-next="memories"
+                        type="button"
+                    >
+                        Keep Going ❤️
+                    </button>
+
+                    <button
+                        class="choice-btn no-btn"
+                        data-no-response="message"
+                        type="button"
+                    >
+                        I'm Shy 🙈
+                    </button>
+
+                </div>
+
+                <p
+                    class="no-response"
+                    id="no-response-message"
+                ></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCENE 06 — SPECIAL MEMORIES
+        ================================================== -->
+
+        <section
+            class="scene"
+            id="scene-memories"
+            data-scene="memories"
+        >
+
+            <div class="gallery-content">
+
+                <div class="section-heading">
+
+                    <p class="eyebrow">
+                        LITTLE MOMENTS
+                    </p>
+
+                    <h2>
+                        Some Memories
+                        <span>Never Fade</span>
+                    </h2>
+
+                </div>
+
+                <div class="memory-grid">
+
+                    <button
+                        class="memory-card"
+                        data-image="photo1.jpg"
+                        type="button"
+                    >
+                        <img
+                            src="photo1.jpg"
+                            alt="Special memory"
+                        >
+                    </button>
+
+                    <button
+                        class="memory-card featured"
+                        data-image="photo2.jpg"
+                        type="button"
+                    >
+                        <img
+                            src="photo2.jpg"
+                            alt="Special memory"
+                        >
+                    </button>
+
+                    <button
+                        class="memory-card"
+                        data-image="photo3.jpg"
+                        type="button"
+                    >
+                        <img
+                            src="photo3.jpg"
+                            alt="Special memory"
+                        >
+                    </button>
+
+                    <button
+                        class="memory-card"
+                        data-image="photo4.jpg"
+                        type="button"
+                    >
+                        <img
+                            src="photo4.jpg"
+                            alt="Special memory"
+                        >
+                    </button>
+
+                </div>
+
+                <div class="choice-buttons">
+
+                    <button
+                        class="choice-btn yes-btn"
+                        data-next="our-videos"
+                        type="button"
+                    >
+                        There Are More ❤️
+                    </button>
+
+                    <button
+                        class="choice-btn no-btn"
+                        data-no-response="memories"
+                        type="button"
+                    >
+                        Enough 😌
+                    </button>
+
+                </div>
+
+                <p
+                    class="no-response"
+                    id="no-response-memories"
+                ></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCENE 07 — VIDEO MEMORIES
+        ================================================== -->
+
+        <section
+            class="scene"
+            id="scene-our-videos"
+            data-scene="our-videos"
+        >
+
+            <div class="video-memory-content">
+
+                <div class="section-heading">
+
+                    <p class="eyebrow">
+                        OUR MOMENTS
+                    </p>
+
+                    <h2>
+                        Press Play
+                        <span>For Us</span>
+                    </h2>
+
+                </div>
+
+                <div class="video-card-grid">
+
+                    <button
+                        class="video-card"
+                        data-video="memory-01.mp4"
+                        type="video"
+                    >
+                        <span class="play-icon">▶</span>
+                        <span>Memory One</span>
+                    </button>
+
+                    <button
+                        class="video-card"
+                        data-video="memory-02.mp4"
+                        type="button"
+                    >
+                        <span class="play-icon">▶</span>
+                        <span>Memory Two</span>
+                    </button>
+
+                    <button
+                        class="video-card"
+                        data-video="memory-03.mp4"
+                        type="button"
+                    >
+                        <span class="play-icon">▶</span>
+                        <span>Memory Three</span>
+                    </button>
+
+                </div>
+
+                <div class="choice-buttons">
+
+                    <button
+                        class="choice-btn yes-btn"
+                        data-next="heart-question"
+                        type="button"
+                    >
+                        Continue ❤️
+                    </button>
+
+                    <button
+                        class="choice-btn no-btn"
+                        data-no-response="our-videos"
+                        type="button"
+                    >
+                        Maybe Later 😏
+                    </button>
+
+                </div>
+
+                <p
+                    class="no-response"
+                    id="no-response-our-videos"
+                ></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCENE 08 — HEART QUESTION
+        ================================================== -->
+
+        <section
+            class="scene"
+            id="scene-heart-question"
+            data-scene="heart-question"
+        >
+
+            <div
+                class="heart-field"
+                id="heartField"
+            ></div>
+
+            <div class="scene-card heart-card">
+
+                <div class="big-heart">
+                    ❤️
+                </div>
+
+                <p class="eyebrow">
+                    ONE LITTLE QUESTION
+                </p>
+
+                <h2>
+                    Do You Know
+                    How Special You Are?
+                </h2>
+
+                <p class="scene-description">
+                    Think carefully, Chuzii...
+                </p>
+
+                <div class="choice-buttons">
+
+                    <button
+                        class="choice-btn yes-btn"
+                        data-next="special-photo"
+                        type="button"
+                    >
+                        Yes ❤️
+                    </button>
+
+                    <button
+                        class="choice-btn no-btn"
+                        data-no-response="heart"
+                        type="button"
+                    >
+                        No 😶
+                    </button>
+
+                </div>
+
+                <p
+                    class="no-response"
+                    id="no-response-heart"
+                ></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCENE 09 — SPECIAL PHOTO
+        ================================================== -->
+
+        <section
+            class="scene"
+            id="scene-special-photo"
+            data-scene="special-photo"
+        >
+
+            <div class="special-photo-content">
+
+                <div class="photo-frame">
+
+                    <img
+                        src="special-photo.jpg"
+                        alt="A special memory"
+                    >
+
+                    <div class="photo-shine"></div>
+
+                </div>
+
+                <div class="photo-message">
+
+                    <p class="eyebrow">
+                        JUST FOR YOU
+                    </p>
+
+                    <h2>
+                        One Photo.
+                        A Thousand Feelings. ❤️
+                    </h2>
+
+                    <div class="choice-buttons">
+
+                        <button
+                            class="choice-btn yes-btn"
+                            data-next="question-two"
+                            type="button"
+                        >
+                            Awww ❤️
+                        </button>
+
+                        <button
+                            class="choice-btn no-btn"
+                            data-no-response="photo"
+                            type="button"
+                        >
+                            Nope 😒
+                        </button>
+
+                    </div>
+
+                    <p
+                        class="no-response"
+                        id="no-response-photo"
+                    ></p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCENE 10 — FUNNY QUESTION
+        ================================================== -->
+
+        <section
+            class="scene"
+            id="scene-question-two"
+            data-scene="question-two"
+        >
+
+            <div class="scene-card funny-card">
+
+                <div class="funny-emoji">
+                    👀
+                </div>
+
+                <p class="eyebrow">
+                    IMPORTANT QUESTION
+                </p>
+
+                <h2>
+                    Are You Ready
+                    For Something Bigger?
+                </h2>
+
+                <p class="scene-description">
+                    Because turning back now would be
+                    highly suspicious. 😂
+                </p>
+
+                <div class="choice-buttons">
+
+                    <button
+                        class="choice-btn yes-btn"
+                        data-next="birthday-song"
+                        type="button"
+                    >
+                        Obviously ❤️
+                    </button>
+
+                    <button
+                        class="choice-btn no-btn"
+                        data-no-response="funny"
+                        type="button"
+                    >
+                        Maybe No 😏
+                    </button>
+
+                </div>
+
+                <p
+                    class="no-response"
+                    id="no-response-funny"
+                ></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCENE 11 — BIRTHDAY SONG
+        ================================================== -->
+
+        <section
+            class="scene"
+            id="scene-birthday-song"
+            data-scene="birthday-song"
+        >
+
+            <div class="birthday-song-content">
+
+                <div class="cake-mini">
+                    🎂
+                </div>
+
+                <p class="eyebrow">
+                    THIS SONG IS ONLY FOR YOU
+                </p>
+
+                <h1>
+                    Happy Birthday
+                    <span class="script-name">
+                        Chuzii
+                    </span>
+                </h1>
+
+                <p>
+                    Turn the volume up. 🎶
+                </p>
+
+                <button
+                    class="music-btn"
+                    id="birthdaySongBtn"
+                    type="button"
+                >
+                    ▶ Play Birthday Song
+                </button>
+
+                <div class="choice-buttons">
+
+                    <button
+                        class="choice-btn yes-btn"
+                        data-next="cake"
+                        type="button"
+                    >
+                        I Love It ❤️
+                    </button>
+
+                    <button
+                        class="choice-btn no-btn"
+                        data-no-response="song"
+                        type="button"
+                    >
+                        Skip 😭
+                    </button>
+
+                </div>
+
+                <p
+                    class="no-response"
+                    id="no-response-song"
+                ></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCENE 12 — LUXURY CAKE
+        ================================================== -->
+
+        <section
+            class="scene"
+            id="scene-cake"
+            data-scene="cake"
+        >
+
+            <div class="cake-content">
+
+                <p class="eyebrow">
+                    MAKE A WISH
+                </p>
+
+                <h2>
+                    One Wish.
+                    One Beautiful Year.
+                </h2>
+
+                <div
+                    class="luxury-cake"
+                    id="luxuryCake"
+                >
+
+                    <div class="cake-glow"></div>
+
+                    <div class="candle candle-one">
+                        <div class="flame"></div>
+                    </div>
+
+                    <div class="candle candle-two">
+                        <div class="flame"></div>
+                    </div>
+
+                    <div class="candle candle-three">
+                        <div class="flame"></div>
+                    </div>
+
+                    <div class="cake-top">
+                        <span>CHUZII</span>
+                    </div>
+
+                    <div class="cake-layer layer-one"></div>
+                    <div class="cake-layer layer-two"></div>
+                    <div class="cake-layer layer-three"></div>
+
+                </div>
+
+                <div class="cake-actions">
+
+                    <button
+                        class="primary-btn"
+                        id="blowCandlesBtn"
+                        type="button"
+                    >
+                        🕯️ Blow Candles
+                    </button>
+
+                    <button
+                        class="primary-btn hidden"
+                        id="cutCakeBtn"
+                        type="button"
+                    >
+                        🔪 Cut The Cake
+                    </button>
+
+                </div>
+
+                <p
+                    class="cake-message"
+                    id="cakeMessage"
+                >
+                    Close your eyes...
+                    make a wish. ✨
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCENE 13 — CAKE SLICE
+        ================================================== -->
+
+        <section
+            class="scene"
+            id="scene-cake-slice"
+            data-scene="cake-slice"
+        >
+
+            <div class="cake-slice-content">
+
+                <div class="cake-result">
+                    🍰
+                </div>
+
+                <p class="eyebrow">
+                    SPECIAL DELIVERY
+                </p>
+
+                <h2>
+                    One Piece
+                    <span>Just For You</span>
+                </h2>
+
+                <p>
+                    Because apparently one whole cake
+                    wasn't enough. 😂❤️
+                </p>
+
+                <div class="choice-buttons">
+
+                    <button
+                        class="choice-btn yes-btn"
+                        data-next="gift"
+                        type="button"
+                    >
+                        Give Me The Gift 🎁
+                    </button>
+
+                    <button
+                        class="choice-btn no-btn"
+                        data-no-response="cake-slice"
+                        type="button"
+                    >
+                        I Don't Want It 😏
+                    </button>
+
+                </div>
+
+                <p
+                    class="no-response"
+                    id="no-response-cake-slice"
+                ></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCENE 14 — GIFT
+        ================================================== -->
+
+        <section
+            class="scene"
+            id="scene-gift"
+            data-scene="gift"
+        >
+
+            <div class="gift-content">
+
+                <p class="eyebrow">
+                    ONE LAST SURPRISE
+                </p>
+
+                <h2>
+                    Something
+                    Is Waiting For You...
+                </h2>
+
+                <div
+                    class="gift-box"
+                    id="giftBox"
+                >
+
+                    <div class="gift-lid"></div>
+
+                    <div class="gift-body"></div>
+
+                    <div class="gift-ribbon vertical"></div>
+
+                    <div class="gift-ribbon horizontal"></div>
+
+                </div>
+
+                <button
+                    class="primary-btn"
+                    id="openGiftBtn"
+                    type="button"
+                >
+                    🎁 Open My Gift
+                </button>
+
+                <div
+                    class="gift-reveal"
+                    id="giftReveal"
+                >
+                    <span>❤️</span>
+
+                    <p>
+                        The best gift isn't inside the box...
+                    </p>
+
+                    <strong>
+                        It's another year
+                        of beautiful memories.
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCENE 15 — LOVE LETTER
+        ================================================== -->
+
+        <section
+            class="scene"
+            id="scene-letter"
+            data-scene="letter"
+        >
+
+            <div class="letter-content">
+
+                <div class="letter-paper">
+
+                    <p class="letter-label">
+                        A LITTLE LETTER
+                    </p>
+
+                    <h2>
+                        Dear Chuzii...
+                    </h2>
+
+                    <p
+                        id="letterText"
+                        class="letter-text"
+                    ></p>
+
+                    <div class="letter-signature">
+                        With love,
+                        <span>
+                            Mr Khroos ❤️
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="choice-buttons">
+
+                    <button
+                        class="choice-btn yes-btn"
+                        data-next="final-wish"
+                        type="button"
+                    >
+                        One More ❤️
+                    </button>
+
+                    <button
+                        class="choice-btn no-btn"
+                        data-no-response="letter"
+                        type="button"
+                    >
+                        That's Enough 🥺
+                    </button>
+
+                </div>
+
+                <p
+                    class="no-response"
+                    id="no-response-letter"
+                ></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCENE 16 — FINAL WISH
+        ================================================== -->
+
+        <section
+            class="scene final-scene"
+            id="scene-final-wish"
+            data-scene="final-wish"
+        >
+
+            <div
+                class="fireworks"
+                id="fireworks"
+            ></div>
+
+            <div class="final-content">
+
+                <div class="final-crown">
+                    👑
+                </div>
+
+                <p class="eyebrow">
+                    ONCE AGAIN...
+                </p>
+
+                <h1>
+                    Happy Birthday
+                </h1>
+
+                <h2 class="script-name">
+                    Chuzii ❤️
+                </h2>
+
+                <p class="dua">
+                    May Allah bless you with happiness,
+                    peace, good health, success and countless
+                    beautiful moments.
+                </p>
+
+                <p class="final-message">
+                    May every year ahead bring you
+                    closer to everything your heart wishes for.
+                </p>
+
+                <div class="final-signature">
+                    From
+                    <span>
+                        Mr Khroos ❤️
+                    </span>
+                </div>
+
+                <div class="final-logo">
+                    RL
+                </div>
+
+                <p class="final-note">
+                    Made with love, laughter
+                    and a little bit of madness. 😄
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         GLOBAL MUSIC CONTROL
+    ====================================================== -->
+
+    <button
+        id="musicControl"
+        class="floating-control"
+        type="button"
+        aria-label="Toggle music"
+    >
+        🎵
+    </button>
+
+
+    <!-- =====================================================
+         PHOTO LIGHTBOX
+    ====================================================== -->
+
+    <div
+        id="photoLightbox"
+        class="modal"
+        aria-hidden="true"
+    >
+
+        <button
+            class="modal-close"
+            id="closePhotoLightbox"
+            type="button"
+        >
+            ×
+        </button>
+
+        <img
+            id="lightboxImage"
+            src=""
+            alt="Full size memory"
+        >
+
+    </div>
+
+
+    <!-- =====================================================
+         VIDEO MODAL
+    ====================================================== -->
+
+    <div
+        id="videoModal"
+        class="modal"
+        aria-hidden="true"
+    >
+
+        <button
+            class="modal-close"
+            id="closeVideoModal"
+            type="button"
+        >
+            ×
+        </button>
+
+        <video
+            id="memoryVideo"
+            controls
+            playsinline
+        ></video>
+
+    </div>
+
+
+    <!-- =====================================================
+         HEART CONTAINER
+    ====================================================== -->
+
+    <div
+        id="globalHeartContainer"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =====================================================
+         CONFETTI
+    ====================================================== -->
+
+    <div
+        id="confettiContainer"
+        aria-hidden="true"
+    ></div>
+
+
+    <!-- =====================================================
+         TOAST
+    ====================================================== -->
+
+    <div
+        id="toast"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+
+    <!-- =====================================================
+         MAIN JAVASCRIPT
+    ====================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
