@@ -59,6 +59,7 @@
 
     <audio
         id="backgroundMusic"
+        autoplay
         loop
         preload="auto"
     >
@@ -336,75 +337,76 @@
         </section>
 
 
-        <!-- =================================================
-             SCENE 04 — BIRTHDAY VIDEO INTRO
-        ================================================== -->
+<!-- =================================================
+SCENE 04 — BIRTHDAY VIDEO INTRO
+================================================== -->
 
-        <section
-            class="scene video-scene"
-            id="scene-birthday-intro"
-            data-scene="birthday-intro"
+<section
+    class="scene video-scene"
+    id="scene-birthday-intro"
+    data-scene="birthday-intro"
+>
+
+    <div class="video-wrapper">
+
+        <!-- Intro Video -->
+        <video
+            id="birthdayIntroVideo"
+            class="main-video"
+            playsinline
+            preload="metadata"
         >
+            <source
+                src="birthday-intro.mp4"
+                type="video/mp4"
+            >
+        </video>
 
-            <div class="video-wrapper">
+        <!-- Intro Text -->
+        <div class="video-overlay">
 
-                <video
-                    id="birthdayIntroVideo"
-                    class="main-video"
-                    playsinline
-                    preload="metadata"
-                >
-                    <source
-                        src="birthday-intro.mp4"
-                        type="video/mp4"
-                    >
-                </video>
+            <p class="eyebrow">
+                A LITTLE SURPRISE
+            </p>
 
-                <div class="video-overlay">
+            <h2>
+                This One Is For You ❤️
+            </h2>
 
-                    <p class="eyebrow">
-                        A LITTLE SURPRISE
-                    </p>
+            <!-- Watch Button -->
+            <button
+                id="watchIntroBtn"
+                class="choice-btn yes-btn"
+                type="button"
+            >
+                Watch ❤️
+            </button>
 
-                    <h2>
-                        This One Is For You ❤️
-                    </h2>
+        </div>
 
-                    <div class="choice-buttons">
+        <!-- Skip Button — VIDEO KE NEECHE -->
+        <div class="intro-video-actions">
 
-                        <button
-                            class="choice-btn yes-btn"
-                            data-next="birthday-message"
-                            type="button"
-                        >
-                            Watch ❤️
-                        </button>
+            <button
+                id="skipIntroBtn"
+                class="choice-btn no-btn"
+                type="button"
+            >
+                Skip 😏
+            </button>
 
-                        <button
-                            class="choice-btn no-btn"
-                            data-no-response="video"
-                            type="button"
-                        >
-                            Skip 😏
-                        </button>
+        </div>
 
-                    </div>
+    </div>
 
-                    <p
-                        class="no-response"
-                        id="no-response-video"
-                    ></p>
+</section>
 
-                </div>
-
-            </div>
-
-        </section>
+       
 
 
-        <!-- =================================================
-             SCENE 05 — BIRTHDAY MESSAGE
-        ================================================== -->
+<!-- =================================================
+SCENE 05 — BIRTHDAY MESSAGE
+================================================== -->
 
         <section
             class="scene"
@@ -1237,6 +1239,26 @@
 
                 <div class="final-logo">
                     RL
+                </div>
+
+                <div class="final-actions">
+
+                    <button
+                        class="choice-btn yes-btn"
+                        id="replayBtn"
+                        type="button"
+                    >
+                        🔄 Replay
+                    </button>
+
+                    <button
+                        class="choice-btn no-btn"
+                        id="websiteOrderBtn"
+                        type="button"
+                    >
+                        💻 Custom Website — Click Now
+                    </button>
+
                 </div>
 
                 <p class="final-note">
