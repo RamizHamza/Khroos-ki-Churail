@@ -4,29 +4,34 @@
    GLOBAL STYLE
 ========================================================= */
 
-/* =========================
-   ROOT
-========================= */
-
 :root {
-    --bg-main: #050509;
-    --bg-secondary: #0b0b14;
+    /* =================================
+       PREMIUM BLUE + GOLD + WHITE
+    ================================= */
+
+    --bg-main: #020817;
+    --bg-secondary: #06152d;
+
+    --blue-deep: #020817;
+    --blue-dark: #06152d;
+    --blue: #0b2a55;
+    --blue-light: #164d8f;
 
     --gold: #d6b36a;
-    --gold-light: #f4dfaa;
+    --gold-light: #f8e7b0;
     --gold-soft: rgba(214, 179, 106, 0.18);
 
     --white: #ffffff;
-    --white-soft: rgba(255, 255, 255, 0.72);
-    --white-faint: rgba(255, 255, 255, 0.45);
+    --white-soft: rgba(255, 255, 255, 0.78);
+    --white-faint: rgba(255, 255, 255, 0.48);
 
-    --pink: #ff6f9f;
-    --pink-soft: rgba(255, 111, 159, 0.2);
+    --pink: #ff8fb7;
+    --pink-soft: rgba(255, 143, 183, 0.16);
 
     --red: #ff4d6d;
 
-    --glass: rgba(255, 255, 255, 0.055);
-    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass: rgba(255, 255, 255, 0.065);
+    --glass-border: rgba(255, 255, 255, 0.14);
 
     --shadow:
         0 30px 100px rgba(0, 0, 0, 0.55);
@@ -79,28 +84,39 @@ video {
 
 
 /* =========================
-   GLOBAL BACKGROUND
+   PREMIUM BLUE BACKGROUND
 ========================= */
 
 #background {
     position: fixed;
     inset: 0;
+
     overflow: hidden;
     pointer-events: none;
     z-index: 0;
 
     background:
         radial-gradient(
-            circle at 50% 20%,
-            rgba(214, 179, 106, 0.08),
+            circle at 50% 15%,
+            rgba(38, 105, 190, 0.30),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 10% 85%,
+            rgba(214, 179, 106, 0.13),
             transparent 35%
         ),
         radial-gradient(
-            circle at 20% 80%,
-            rgba(255, 111, 159, 0.07),
-            transparent 35%
+            circle at 90% 70%,
+            rgba(20, 76, 150, 0.22),
+            transparent 38%
         ),
-        #050509;
+        linear-gradient(
+            135deg,
+            #020817 0%,
+            #06152d 48%,
+            #020b1d 100%
+        );
 }
 
 
@@ -126,13 +142,17 @@ video {
 .aurora-one {
     top: -25%;
     left: -15%;
-    background: rgba(214, 179, 106, 0.35);
+
+    background:
+        rgba(30, 100, 200, 0.45);
 }
 
 .aurora-two {
     right: -20%;
     bottom: -20%;
-    background: rgba(255, 111, 159, 0.3);
+
+    background:
+        rgba(214, 179, 106, 0.25);
 
     animation-delay: -4s;
 }
@@ -144,7 +164,8 @@ video {
     width: 35vw;
     height: 35vw;
 
-    background: rgba(120, 90, 255, 0.12);
+    background:
+        rgba(50, 120, 255, 0.18);
 
     animation-delay: -7s;
 }
@@ -179,7 +200,8 @@ video {
 
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.35);
 
     animation:
         starTwinkle 3s ease-in-out infinite;
@@ -3684,5 +3706,266 @@ h2 {
 
     .footer-copy {
         font-size: 7px;
+    }
+}
+
+
+/* =========================================================
+   PREMIUM UNIVERSAL RESPONSIVE SYSTEM
+   MOBILE • TABLET • LAPTOP • DESKTOP
+========================================================= */
+
+/* Prevent content from becoming too wide */
+.scene > * {
+    max-width: 100%;
+}
+
+/* Headings automatically scale with screen */
+h1,
+h2 {
+    font-size: clamp(36px, 5vw, 100px);
+}
+
+/* Paragraphs */
+p,
+.scene-description,
+.large-message,
+.welcome-text,
+.dua {
+    font-size: clamp(12px, 1.15vw, 18px);
+}
+
+/* Main scene spacing */
+.scene {
+    padding:
+        clamp(12px, 3vw, 40px);
+}
+
+/* Cards automatically resize */
+.scene-card {
+    width: min(580px, 92vw);
+
+    padding:
+        clamp(20px, 4vw, 55px);
+}
+
+/* Images never overflow */
+img,
+video {
+    max-width: 100%;
+}
+
+/* Buttons scale naturally */
+.primary-btn,
+.choice-btn {
+    font-size:
+        clamp(12px, 1vw, 16px);
+}
+
+/* Gallery automatically adapts */
+.memory-grid {
+    width: min(820px, 92vw);
+}
+
+/* Video cards */
+.video-card-grid {
+    width: min(900px, 92vw);
+}
+
+/* =========================================================
+   LARGE LAPTOP / DESKTOP
+========================================================= */
+
+@media (min-width: 1200px) {
+
+    .scene {
+        padding: 40px;
+    }
+
+    .intro-title {
+        font-size: clamp(70px, 7vw, 115px);
+    }
+
+    .scene-card h2 {
+        font-size: clamp(50px, 5vw, 75px);
+    }
+
+    .large-message {
+        max-width: 700px;
+    }
+}
+
+/* =========================================================
+   NORMAL LAPTOP
+========================================================= */
+
+@media (min-width: 901px) and (max-width: 1199px) {
+
+    .scene {
+        padding: 28px;
+    }
+
+    .intro-title {
+        font-size: clamp(60px, 8vw, 95px);
+    }
+
+    .video-wrapper {
+        width: min(900px, 90vw);
+        height: min(70vh, 600px);
+    }
+
+    .special-photo-content {
+        gap: 35px;
+    }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (min-width: 651px) and (max-width: 900px) {
+
+    .scene {
+        padding: 22px;
+    }
+
+    .intro-title {
+        font-size: clamp(55px, 10vw, 85px);
+    }
+
+    .scene-card {
+        width: min(600px, 90vw);
+    }
+
+    .memory-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .video-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    .scene {
+        padding: 15px;
+    }
+
+    .intro-title {
+        font-size:
+            clamp(45px, 14vw, 72px);
+    }
+
+    .scene-card {
+        width: 94vw;
+
+        padding:
+            clamp(20px, 5vw, 30px);
+    }
+
+    .scene-card h2 {
+        font-size:
+            clamp(32px, 10vw, 50px);
+    }
+
+    .scene-description {
+        font-size:
+            clamp(11px, 3.2vw, 14px);
+
+        line-height: 1.65;
+    }
+
+    .large-message {
+        font-size:
+            clamp(13px, 3.8vw, 17px);
+
+        line-height: 1.7;
+    }
+
+    .choice-buttons {
+        width: 100%;
+    }
+
+    .choice-btn {
+        width: 100%;
+    }
+
+    .memory-grid {
+        width: 94vw;
+    }
+
+    .video-wrapper {
+        width: 94vw;
+        height: 70vh;
+    }
+}
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 390px) {
+
+    .scene {
+        padding: 10px;
+    }
+
+    .intro-title {
+        font-size: 48px;
+    }
+
+    .scene-card {
+        width: 96vw;
+        padding: 20px 15px;
+    }
+
+    .scene-card h2 {
+        font-size: 32px;
+    }
+
+    .scene-description {
+        font-size: 11px;
+    }
+
+    .primary-btn,
+    .choice-btn {
+        min-height: 48px;
+        font-size: 12px;
+    }
+}
+
+/* =========================================================
+   VERY SHORT SCREENS
+   Prevent vertical content from getting cut
+========================================================= */
+
+@media (max-height: 700px) {
+
+    .scene {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .intro-logo {
+        transform: scale(0.85);
+        margin-bottom: 12px;
+    }
+
+    .intro-subtitle {
+        margin-top: 12px;
+    }
+
+    .loading-line {
+        margin-top: 20px;
+    }
+
+    .scene-card {
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 }
