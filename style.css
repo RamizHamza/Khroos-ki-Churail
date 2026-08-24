@@ -1494,172 +1494,360 @@ h2 {
 
 
 /* =========================
-   CAKE
+   REALISTIC CREAM CAKE
+   WHITE + GOLD + PINK
 ========================= */
 
 .cake-content {
-
     width: min(850px, 92vw);
-
     text-align: center;
 }
 
 .cake-content h2 {
-
     font-size: clamp(40px, 6vw, 70px);
-
-    margin-bottom: 18px;
+    margin-bottom: 10px;
 }
 
+/* Main Cake */
 .luxury-cake {
-
     position: relative;
 
-    width: 280px;
-    height: 230px;
+    width: 320px;
+    height: 285px;
 
-    margin: 25px auto 15px;
+    margin: 15px auto 5px;
+
+    filter:
+        drop-shadow(0 30px 35px rgba(0,0,0,0.45));
+
+    transform-origin: center bottom;
 }
 
+/* Soft glow underneath */
 .cake-glow {
-
     position: absolute;
 
-    inset: 35% 5% 0;
+    left: 5%;
+    right: 5%;
+    bottom: 0;
+
+    height: 90px;
 
     border-radius: 50%;
 
     background:
-        rgba(214,179,106,0.15);
+        rgba(255, 111, 159, 0.16);
 
     filter: blur(30px);
 }
+
+/* =========================
+   CAKE TOP
+========================= */
 
 .cake-top {
 
     position: absolute;
 
-    left: 30px;
-    right: 30px;
-    top: 75px;
+    z-index: 10;
 
-    height: 55px;
+    left: 32px;
+    right: 32px;
+    top: 82px;
+
+    height: 68px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     border-radius:
-        50% 50% 12px 12px;
-
-    color: #3d2a12;
+        50% 50% 18px 18px;
 
     background:
         linear-gradient(
-            135deg,
-            #f4dfaa,
-            #c79b4a
+            180deg,
+            #fffdf8 0%,
+            #fff7ed 55%,
+            #f8e9dc 100%
         );
 
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size: 18px;
-
-    letter-spacing: 4px;
+    border:
+        2px solid rgba(255,255,255,0.8);
 
     box-shadow:
-        inset 0 4px 8px rgba(255,255,255,0.35);
+        inset 0 6px 10px rgba(255,255,255,0.9),
+        0 8px 20px rgba(0,0,0,0.15);
 }
+
+/* Cream edge */
+.cake-top::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 12px;
+    right: 12px;
+    bottom: -8px;
+
+    height: 18px;
+
+    border-radius: 0 0 50% 50%;
+
+    background:
+        #fffaf4;
+
+    box-shadow:
+        0 5px 8px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   MARYAM CHOCOLATE NAME
+========================= */
+
+.cake-name {
+    position: absolute;
+    z-index: 50;
+
+    left: 0;
+    right: 0;
+    top: 18px;
+
+    text-align: center;
+
+    font-family: "Great Vibes", cursive;
+    font-size: 38px;
+    font-weight: 600;
+
+    color: #4b2118 !important;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 1px 0 #8b4a38,
+        1px 2px 2px rgba(40, 12, 5, 0.45);
+
+    pointer-events: none;
+}
+
+/* =========================
+   CAKE LAYERS
+========================= */
 
 .cake-layer {
 
     position: absolute;
 
-    left: 15px;
-    right: 15px;
+    z-index: 2;
 
-    height: 58px;
+    height: 68px;
 
     border-radius:
-        12px 12px 20px 20px;
+        16px 16px 24px 24px;
 
     background:
         linear-gradient(
             180deg,
-            #2c2630,
-            #111018
+            #fffaf5,
+            #f6e6da 55%,
+            #ead5c7
         );
 
     border:
-        1px solid rgba(214,179,106,0.35);
+        2px solid rgba(255,255,255,0.75);
 
     box-shadow:
-        inset 0 5px 10px rgba(255,255,255,0.05),
-        0 15px 30px rgba(0,0,0,0.3);
+        inset 0 5px 12px rgba(255,255,255,0.85),
+        inset 0 -8px 12px rgba(190,145,125,0.12),
+        0 15px 25px rgba(0,0,0,0.22);
 }
 
+/* Cream filling between layers */
+.cake-layer::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 8px;
+    right: 8px;
+    top: -7px;
+
+    height: 14px;
+
+    border-radius: 50%;
+
+    background:
+        #fffdf9;
+
+    box-shadow:
+        0 3px 5px rgba(0,0,0,0.08);
+}
+
+/* Pink cream decoration */
+.cake-layer::after {
+
+    content: "🌸  ✦  🌸  ✦  🌸";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 8px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    opacity: 0.9;
+}
+
+/* First layer */
 .layer-one {
-    top: 105px;
+
+    top: 132px;
+
+    left: 25px;
+    right: 25px;
 }
 
+/* Second layer */
 .layer-two {
-    top: 145px;
-    left: 5px;
-    right: 5px;
+
+    top: 178px;
+
+    left: 14px;
+    right: 14px;
 }
 
+/* Bottom layer */
 .layer-three {
-    top: 185px;
-    left: -5px;
-    right: -5px;
+
+    top: 224px;
+
+    left: 2px;
+    right: 2px;
 }
+
+/* =========================
+   GOLD DECORATION
+========================= */
+
+.luxury-cake .cake-top::before {
+
+    content: "✦  ✧  ✦";
+
+    position: absolute;
+
+    z-index: 8;
+
+    top: 8px;
+
+    color: #c99b42;
+
+    font-size: 15px;
+
+    letter-spacing: 10px;
+}
+
+/* Gold pearls */
+.layer-one,
+.layer-two,
+.layer-three {
+
+    background-image:
+        radial-gradient(
+            circle at 15% 70%,
+            #d6b36a 0 3px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle at 85% 70%,
+            #d6b36a 0 3px,
+            transparent 4px
+        ),
+        linear-gradient(
+            180deg,
+            #fffaf5,
+            #f6e6da 55%,
+            #ead5c7
+        );
+}
+
+/* =========================
+   CANDLES
+========================= */
 
 .candle {
 
     position: absolute;
 
-    z-index: 5;
+    z-index: 15;
 
-    top: 35px;
+    top: 34px;
 
-    width: 9px;
-    height: 42px;
+    width: 11px;
+    height: 50px;
 
-    border-radius: 5px;
+    border-radius: 6px;
 
     background:
-        linear-gradient(
-            90deg,
-            #d6b36a,
-            #fff0bd,
-            #b58b3f
+        repeating-linear-gradient(
+            135deg,
+            #f4dfaa 0 7px,
+            #d6b36a 7px 12px
         );
+
+    box-shadow:
+        0 4px 8px rgba(0,0,0,0.2);
 }
 
 .candle-one {
-    left: 95px;
+    left: 102px;
 }
 
 .candle-two {
-    left: 135px;
+    left: 145px;
 }
 
 .candle-three {
-    left: 175px;
+    left: 188px;
 }
+
+/* Candle wick */
+.candle::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -5px;
+    left: 50%;
+
+    width: 2px;
+    height: 7px;
+
+    transform: translateX(-50%);
+
+    background: #35231b;
+}
+
+/* =========================
+   FLAMES
+========================= */
 
 .flame {
 
     position: absolute;
 
-    width: 15px;
-    height: 23px;
+    width: 18px;
+    height: 27px;
 
     left: 50%;
-    top: -18px;
+    top: -25px;
 
     transform:
         translateX(-50%);
@@ -1670,16 +1858,14 @@ h2 {
     background:
         radial-gradient(
             circle at 50% 70%,
-            #fff,
-            #ffd166 45%,
-            #ff7b00 70%,
+            #ffffff 0 15%,
+            #ffd166 35%,
+            #ff8c00 65%,
             transparent 72%
         );
 
     filter:
-        drop-shadow(
-            0 0 10px #ffb703
-        );
+        drop-shadow(0 0 12px #ffb703);
 
     animation:
         flameMove 0.8s ease-in-out infinite alternate;
@@ -1702,23 +1888,89 @@ h2 {
     }
 }
 
-.candles-out .flame {
+/* =========================
+   PINK FLOWERS
+========================= */
 
-    opacity: 0;
+.luxury-cake::before {
 
-    transform:
-        translateX(-50%)
-        scale(0);
+    content: "🌸";
 
-    transition:
-        all 0.5s ease;
+    position: absolute;
+
+    z-index: 20;
+
+    left: 20px;
+    top: 108px;
+
+    font-size: 27px;
+
+    filter:
+        drop-shadow(0 3px 4px rgba(0,0,0,0.2));
 }
+
+.luxury-cake .cake-glow::after {
+
+    content: "🌸";
+
+    position: absolute;
+
+    right: 18px;
+    top: 45px;
+
+    font-size: 27px;
+}
+
+/* =========================
+   CANDLE BLOW OUT
+========================= */
+
+.flame.extinguished {
+
+    animation:
+        candleBlowOut 0.55s ease forwards !important;
+}
+
+@keyframes candleBlowOut {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+
+    55% {
+        opacity: 0.55;
+
+        transform:
+            translateX(-50%)
+            translateY(-8px)
+            scale(0.7);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            translateY(-15px)
+            scale(0);
+
+        filter: none;
+    }
+}
+
+/* =========================
+   CAKE ACTIONS
+========================= */
 
 .cake-actions {
 
     width: min(330px, 90vw);
 
-    margin: 10px auto;
+    margin: 5px auto;
 }
 
 .cake-message {
@@ -1726,6 +1978,40 @@ h2 {
     color: var(--white-soft);
 
     font-size: 13px;
+}
+
+/* =========================
+   MOBILE CAKE
+========================= */
+
+@media (max-width: 650px) {
+
+    .luxury-cake {
+
+        width: 290px;
+        height: 260px;
+
+        transform: scale(0.88);
+
+        margin-top: 0;
+        margin-bottom: -20px;
+    }
+
+    .cake-name {
+        font-size: 31px;
+    }
+
+    .candle-one {
+        left: 92px;
+    }
+
+    .candle-two {
+        left: 132px;
+    }
+
+    .candle-three {
+        left: 172px;
+    }
 }
 
 
@@ -3185,5 +3471,218 @@ h2 {
     .intro-video-actions .choice-btn {
         min-width: 130px;
         padding: 12px 24px;
+    }
+}
+
+/* =========================
+   MARYAM — CHOCOLATE TEXT
+========================= */
+
+.cake-top .cake-name,
+.cake-name {
+    position: relative !important;
+    z-index: 999 !important;
+
+    display: block !important;
+
+    color: #3b160f !important;
+
+    font-family: "cormorant garamond", serif !important;
+    font-size: 25px !important;
+    font-weight: 700 !important;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    text-shadow:
+        1px 1px 0 #7a3828,
+        0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* =========================
+   CAKE KNIFE — VISIBLE
+========================= */
+
+.luxury-cake::after {
+    content: "🔪" !important;
+
+    position: absolute !important;
+
+    z-index: 9999 !important;
+
+    top: 55px;
+    left: -80px;
+
+    font-size: 64px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform: rotate(-25deg);
+}
+
+.luxury-cake.cake-cut::after {
+    animation:
+        cakeKnifeCut 2.1s cubic-bezier(0.22, 1, 0.36, 1)
+        forwards !important;
+}
+
+@media (max-width: 600px) {
+    .luxury-cake::after {
+        font-size: 55px;
+    }
+}
+
+
+/* =========================================
+   PREMIUM RL LOGO
+   Separate from existing watermark
+========================================= */
+
+.premium-rl-logo {
+    position: fixed;
+
+    top: 22px;
+    left: 24px;
+
+    z-index: 15000;
+
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: none;
+
+    opacity: 0.95;
+
+    filter:
+        drop-shadow(0 5px 15px rgba(0, 0, 0, 0.35));
+
+    transition:
+        transform 0.4s ease,
+        opacity 0.4s ease;
+}
+
+.premium-rl-logo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+
+    .premium-rl-logo {
+        top: 15px;
+        left: 15px;
+
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 390px) {
+
+    .premium-rl-logo {
+        top: 12px;
+        left: 12px;
+
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.site-footer {
+    position: fixed;
+
+    left: 50%;
+    bottom: 10px;
+
+    transform: translateX(-50%);
+
+    width: min(600px, 94vw);
+
+    text-align: center;
+
+    z-index: 15000;
+
+    pointer-events: none;
+
+    line-height: 1.35;
+}
+
+.footer-created {
+    color: rgba(255,255,255,0.72);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.footer-service {
+    margin-top: 3px;
+    color: rgba(255,255,255,0.42);
+    font-size: 8px;
+}
+
+.footer-contact {
+    margin-top: 2px;
+    color: var(--gold-light);
+    font-size: 9px;
+}
+
+.footer-copy {
+    margin-top: 3px;
+    color: rgba(255,255,255,0.3);
+    font-size: 8px;
+}
+
+.registered {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 11px;
+    height: 11px;
+
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 50%;
+
+    font-size: 7px;
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+
+    .site-footer {
+        bottom: 7px;
+        width: 94vw;
+    }
+
+    .footer-created {
+        font-size: 9px;
+    }
+
+    .footer-service {
+        font-size: 7px;
+    }
+
+    .footer-contact {
+        font-size: 8px;
+    }
+
+    .footer-copy {
+        font-size: 7px;
     }
 }
