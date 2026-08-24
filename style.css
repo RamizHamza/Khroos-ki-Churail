@@ -3417,7 +3417,6 @@ h2 {
 }
 
 .luxury-cake.cake-cut .layer-one,
-.luxury-cake.cake-cut .layer-two,
 .luxury-cake.cake-cut .layer-three {
     animation: cakeLayersCut 1.7s ease forwards;
 }
