@@ -2024,7 +2024,7 @@ h2 {
     .luxury-cake {
 
         width: 290px;
-        height: 200px;
+        height: 260px;
 
         transform: scale(0.88);
 
@@ -3027,8 +3027,8 @@ h2 {
         top: 15px;
         right: 15px;
 
-        width: 42px;
-        height: 42px;
+        width: 30px;
+        height: 30px;
     }
 
     .intro-logo {
@@ -4119,3 +4119,5 @@ video {
     display: none !important; /* Video chalte waqt Text aur Watch/Skip buttons hide ho jayenge */
 }
 
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap');
