@@ -3981,3 +3981,141 @@ video {
         padding-bottom: 20px;
     }
 }
+
+
+
+/* Black Video Box Ko Hatane Ke Liye */
+#scene-birthday-intro .main-video {
+    display: none !important;
+}
+
+/* Container Ko Transparent Aur Center Align Karne Ke Liye */
+#scene-birthday-intro .video-wrapper {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: auto !important;
+    min-height: 60vh;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Overlay Text aur Buttons Ko Center Mein Sahi Display Karne Ke Liye */
+#scene-birthday-intro .video-overlay {
+    position: relative !important;
+    inset: auto !important;
+    background: transparent !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Watch aur Skip Button Click Issue Fix */
+#scene-birthday-intro button {
+    position: relative !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+/* 1. Introductory Screen Box Styling (Transparent & Centered) */
+#scene-birthday-intro .video-wrapper {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: auto !important;
+    min-height: 60vh;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+#scene-birthday-intro .video-overlay {
+    position: relative !important;
+    inset: auto !important;
+    background: transparent !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center;
+}
+
+/* 2. Intro Video Initially Hidden */
+#scene-birthday-intro #birthdayIntroVideo {
+    display: none;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+/* 3. When Video Playing Class is Added */
+#scene-birthday-intro.playing #birthdayIntroVideo {
+    display: block !important;
+}
+
+#scene-birthday-intro.playing .video-overlay {
+    display: none !important; /* Video chalne par text/button chup jayenge */
+}
+
+/* 1. Normal State: Start mein Black Box Bilkul Nahi Hoga */
+#scene-birthday-intro .video-wrapper {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: auto !important;
+    min-height: 60vh;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+#scene-birthday-intro .video-overlay {
+    position: relative !important;
+    inset: auto !important;
+    background: transparent !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center;
+}
+
+/* Video Shuru Mein Chupi Hogi */
+#scene-birthday-intro #birthdayIntroVideo {
+    display: none;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+/* 2. Playing State: Jab Video Chale gi tab Black Screen Aaye gi */
+#scene-birthday-intro.playing {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000000 !important; /* Video ke waqt Full Black Background */
+    z-index: 99999;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+#scene-birthday-intro.playing #birthdayIntroVideo {
+    display: block !important;
+}
+
+#scene-birthday-intro.playing .video-overlay,
+#scene-birthday-intro.playing .intro-video-actions {
+    display: none !important; /* Video chalte waqt Text aur Watch/Skip buttons hide ho jayenge */
+}
+
