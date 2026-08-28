@@ -1419,3 +1419,42 @@ Happy Birthday, Chuzii. ❤️
     startBackgroundMusic();
 
 });
+
+
+const watchBtn = document.getElementById('watchIntroBtn');
+const video = document.getElementById('birthdayIntroVideo');
+const sceneIntro = document.getElementById('scene-birthday-intro');
+const bgMusic = document.getElementById('backgroundMusic');
+
+if (watchBtn && video && sceneIntro) {
+    // Watch Button Click Handling
+    watchBtn.addEventListener('click', function() {
+        // 1. Background Music Pause
+        if (bgMusic) {
+            bgMusic.pause();
+        }
+
+        // 2. Black Screen Active aur Video Display
+        sceneIntro.classList.add('playing');
+        video.currentTime = 0;
+        video.play();
+    });
+
+    // 3. Jab Video Khatam (Ended) Ho Jaaye
+    video.addEventListener('ended', function() {
+        // Black Background Khatam Karein
+        sceneIntro.classList.remove('playing');
+        
+        // Background Music Phir Se Start Karein
+        if (bgMusic) {
+            bgMusic.play();
+        }
+
+        // Agle Scene (Birthday Message) Par Shift Hone Ke Liye:
+        // (Agar aapke JS mein function bana hua hai, jaise goToNextScene ya switchScene)
+        const nextBtn = document.querySelector('[data-next="birthday-message"]');
+        if (nextBtn) {
+            nextBtn.click();
+        }
+    });
+}
