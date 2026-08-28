@@ -2016,36 +2016,45 @@ h2 {
 }
 
 /* =========================
-   MOBILE CAKE
+   MOBILE CAKE FIX
 ========================= */
 
 @media (max-width: 650px) {
 
     .luxury-cake {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
 
-        width: 290px;
-        height: 260px;
-
-        transform: scale(0.88);
-
-        margin-top: 25px;
-        margin-bottom: 50px;
+        /* Transform transform remove karke margin auto se perfectly center karein */
+        transform: none;
+        margin: 20px auto 40px auto;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
     }
 
     .cake-name {
-        font-size: 31px;
+        font-size: 26px;
+        text-align: center;
+        width: 100%;
     }
 
+    /* Candles ko absolute center ke hisab se alignment */
     .candle-one {
-        left: 92px;
+        left: calc(50% - 40px);
     }
 
     .candle-two {
-        left: 132px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .candle-three {
-        left: 172px;
+        left: calc(50% + 40px);
     }
 }
 
