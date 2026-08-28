@@ -3015,7 +3015,7 @@ h2 {
     .rl-watermark {
 
         right: 14px;
-        bottom: 12px;
+        bottom: 10px;
 
         font-size: 15px;
 
@@ -3024,11 +3024,11 @@ h2 {
 
     .floating-control {
 
-        top: 15px;
+        top: 25px;
         right: 15px;
 
         width: 30px;
-        height: 30px;
+        height: 25px;
     }
 
     .intro-logo {
