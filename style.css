@@ -1001,14 +1001,18 @@ h2 {
     overflow: hidden;
 
     border-radius: 28px;
+    
+    background: transparent;
 
-    background: #000;
+    border:none;
 
-    border:
-        1px solid rgba(255, 255, 255, 0.12);
+    box-shadow:none;
 
-    box-shadow:
-        0 30px 100px rgba(0, 0, 0, 0.65);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .main-video {
@@ -2011,7 +2015,7 @@ h2 {
     .luxury-cake {
 
         width: 290px;
-        height: 260px;
+        height: 200px;
 
         transform: scale(0.88);
 
