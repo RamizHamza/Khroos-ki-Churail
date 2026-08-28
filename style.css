@@ -992,27 +992,36 @@ h2 {
 ========================= */
 
 .video-wrapper {
-
     position: relative;
-
     width: min(1000px, 92vw);
     height: min(76vh, 650px);
-
-    overflow: hidden;
-
-    border-radius: 28px;
     
-    background: transparent;
+    /* Black Background & Border completely removed */
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 
-    border:none;
-
-    box-shadow:none;
-
+    /* Text & Button ko center mein laane ke liye */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+/* Agar koi overlay/video box transparent na ho raha ho */
+.video-wrapper video,
+.video-wrapper .overlay {
+    background: transparent !important;
+}
+
+/* Button click issue fix & Position fix */
+.watch-btn, 
+.video-wrapper button {
+    position: relative;
+    z-index: 999 !important; /* Click block hone se bachane ke liye */
+    cursor: pointer;
+    pointer-events: auto !important;
 }
 
 .main-video {
