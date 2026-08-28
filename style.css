@@ -2029,7 +2029,7 @@ h2 {
         transform: scale(0.88);
 
         margin-top: 0;
-        margin-bottom: -20px;
+        margin-bottom: 0;
     }
 
     .cake-name {
@@ -3015,9 +3015,9 @@ h2 {
     .rl-watermark {
 
         right: 14px;
-        bottom: 10px;
+        bottom: 14px;
 
-        font-size: 15px;
+        font-size: 25px;
 
         letter-spacing: 3px;
     }
@@ -3027,8 +3027,8 @@ h2 {
         top: 25px;
         right: 15px;
 
-        width: 30px;
-        height: 25px;
+        width: 60px;
+        height: 60px;
     }
 
     .intro-logo {
@@ -3750,7 +3750,7 @@ p,
 /* Main scene spacing */
 .scene {
     padding:
-        clamp(12px, 3vw, 40px);
+        clamp(12px, 90vw, 40px);
 }
 
 /* Cards automatically resize */
