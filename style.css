@@ -2022,8 +2022,8 @@ h2 {
 @media (max-width: 650px) {
 
     .luxury-cake {
-        width: 280px;
-        height: 280px;
+        width: 290px;
+        height: 290px;
         
         display: flex;
         flex-direction: column;
@@ -4122,4 +4122,5 @@ video {
 #scene-birthday-intro.playing .intro-video-actions {
     display: none !important; /* Video chalte waqt Text aur Watch/Skip buttons hide ho jayenge */
 }
+
 
