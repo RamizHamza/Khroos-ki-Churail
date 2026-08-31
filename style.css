@@ -2022,9 +2022,8 @@ h2 {
 @media (max-width: 650px) {
 
     .luxury-cake {
-        width: 100%;
-        max-width: 280px;
-        height: auto;
+        width: 280pz;
+        height: 200px;
 
         /* Transform transform remove karke margin auto se perfectly center karein */
         transform: none;
@@ -3718,15 +3717,15 @@ h2 {
     }
 
     .footer-service {
-        font-size: 7px;
+        font-size: 15px;
     }
 
     .footer-contact {
-        font-size: 8px;
+        font-size: 10px;
     }
 
     .footer-copy {
-        font-size: 7px;
+        font-size: 10px;
     }
 }
 
