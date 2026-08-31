@@ -2022,7 +2022,7 @@ h2 {
 @media (max-width: 650px) {
 
     .luxury-cake {
-        width: 280pz;
+        width: 280px;
         height: 280px;
         
         display: flex;
@@ -3709,7 +3709,7 @@ h2 {
     }
 
     .footer-created {
-        font-size: 9px;
+        font-size: 7px;
     }
 
     .footer-service {
@@ -3717,7 +3717,7 @@ h2 {
     }
 
     .footer-contact {
-        font-size: 10px;
+        font-size: 7px;
     }
 
     .footer-copy {
