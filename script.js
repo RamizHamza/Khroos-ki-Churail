@@ -22,6 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const musicControl = document.getElementById("musicControl");
     const birthdaySongBtn = document.getElementById("birthdaySongBtn");
 
+    const forgotNameInput = document.getElementById("forgotNameInput");
+    const forgotNextBtn = document.getElementById("forgotNextBtn");
+    const passwordReveal = document.getElementById("passwordReveal");
+    const revealedPassword = document.getElementById("revealedPassword");
+
+    const forgotBackBtn = document.getElementById("forgotBackBtn");
+
     const birthdayIntroVideo = document.getElementById("birthdayIntroVideo");
 
     const photoLightbox = document.getElementById("photoLightbox");
@@ -324,31 +331,94 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
-       PASSWORD NO / HINT
-       ===================================================== */
+/* =====================================================
+PASSWORD NO / HINT
+===================================================== */
+if (passwordNoBtn) {
 
-    if (passwordNoBtn) {
+    passwordNoBtn.addEventListener(
+        "click",
+        () => {
 
-        passwordNoBtn.addEventListener(
-            "click",
-            () => {
+            showScene("forgot-password");
 
-                if (hintBox) {
-                    hintBox.classList.add("show");
-                }
+            setTimeout(() => {
 
-                showToast(
-                    "Wrong answer 😭 Hint unlocked 👑"
+                forgotNameInput?.focus();
+
+            }, 300);
+
+        }
+    );
+
+}
+
+
+if (forgotNextBtn) {
+
+    forgotNextBtn.addEventListener(
+        "click",
+        () => {
+
+            const name =
+                forgotNameInput?.value.trim();
+
+            if (!name) {
+
+                showFeedback(
+                    "forgotFeedback",
+                    "Pehle apna naam likho 😭"
                 );
+
+                return;
             }
-        );
-    }
+
+            if (revealedPassword) {
+
+                revealedPassword.textContent =
+                    `Hey ${name} ❤️ Your Password is: ${PASSWORD}`;
+
+            }
+
+            passwordReveal?.classList.add("show");
+
+            forgotNextBtn.style.display =
+                "none";
+
+        }
+    );
+
+}
+
+if (forgotBackBtn) {
+
+    forgotBackBtn.addEventListener("click", () => {
+
+        showScene("password");
+
+        if (forgotNameInput) {
+            forgotNameInput.value = "";
+        }
+
+        if (passwordReveal) {
+            passwordReveal.classList.remove("show");
+        }
+
+        if (forgotNextBtn) {
+            forgotNextBtn.style.display = "";
+        }
+
+    });
+
+}
 
 
-    /* =====================================================
-       ALL YES BUTTONS
-       ===================================================== */
+
+
+
+/* =====================================================
+ALL YES BUTTONS
+===================================================== */
 
     document.querySelectorAll(
         "[data-next]"
