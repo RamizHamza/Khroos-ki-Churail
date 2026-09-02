@@ -18,6 +18,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const passwordFeedback = document.getElementById("passwordFeedback");
 
     const backgroundMusic = document.getElementById("backgroundMusic");
+
+    let musicStarted = false;
+
+        function startMusicOnFirstTap() {
+         if (musicStarted || !backgroundMusic) return;
+
+         backgroundMusic.volume = 0.7;
+
+         backgroundMusic.play()
+            .then(() => {
+             musicStarted = true;
+            })
+          .catch(() => {});
+        }
+
+       document.addEventListener("click", startMusicOnFirstTap, { once: true });
+       document.addEventListener("touchstart", startMusicOnFirstTap, {
+       once: true,
+       passive: true
+    });
+
     const birthdayMusic = document.getElementById("birthdayMusic");
     const musicControl = document.getElementById("musicControl");
     const birthdaySongBtn = document.getElementById("birthdaySongBtn");
@@ -53,16 +74,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const loadingProgress = document.getElementById("loadingProgress");
     const loadingText = document.getElementById("loadingText");
 
-    const globalHeartContainer =
-        document.getElementById("globalHeartContainer");
+    const globalHeartContainer = document.getElementById("globalHeartContainer");
 
     const heartField = document.getElementById("heartField");
 
-    const fireworks =
-        document.getElementById("fireworks");
+    const fireworks = document.getElementById("fireworks");
 
-    const toast =
-        document.getElementById("toast");
+    const toast = document.getElementById("toast");
 
 
     /* =====================================================
@@ -72,7 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const PASSWORD = "King3386";
 
     let currentScene = "intro";
-    let musicStarted = false;
     let birthdaySongPlaying = false;
     let cakeCandlesBlown = false;
     let cakeCut = false;
@@ -136,6 +153,8 @@ document.addEventListener("DOMContentLoaded", () => {
             top: 0,
             behavior: "instant"
         });
+
+        resetRunawayButtons();
 
         onSceneEnter(sceneName);
     }
@@ -475,13 +494,13 @@ ALL YES BUTTONS
         const messages = {
 
             identity:
-                "Wrong answer 😏 Nice try, Chuzii.",
+                "Churail pagal ho gai ho 😏 try again Chuzii.",
 
             welcome:
-                "You can't escape your own birthday surprise 😂",
+                "Tum No nhi kr skti dekho button bi bhag gya 😂",
 
             video:
-                "Nope. The director says WATCH IT. 🎬😂",
+                "Nope. The director says WATCH IT Jano dekho video. 🎬😂",
 
             message:
                 "Shy mode activated 🙈❤️",
@@ -490,16 +509,16 @@ ALL YES BUTTONS
                 "Enough? Impossible. There are only 4... for now. 😏",
 
             "our-videos":
-                "Maybe later? Suspicious behavior detected. 👀",
+                "Maybe later? abhi k abhi dekho wrna aagy jany bi nhi do ga. 👀",
 
             heart:
                 "Then Mr Khroos has to remind you... you're VERY special. ❤️",
 
             photo:
-                "Nope? That photo says otherwise 😭😂",
+                "Nope? Kia is picture ny feelings nhi di? 😭😂",
 
             funny:
-                "Nice attempt. The website has decided NO. 😂",
+                "The website has decided NO. 😂",
 
             song:
                 "Skip the birthday song? That's illegal today. 😭🎂",
@@ -528,6 +547,154 @@ ALL YES BUTTONS
         }, 3000);
     }
 
+
+/* =========================================================
+RUNAWAY NO BUTTONS 😏
+Negative buttons bhaagenge jab unhein pakarne ki koshish hogi
+========================================================= */
+
+function moveRunawayButton(button) {
+    if (!button) return;
+
+    const rect = button.getBoundingClientRect();
+    const margin = 15;
+
+    const maxX = Math.max(
+        margin,
+        window.innerWidth - rect.width - margin
+    );
+
+    const maxY = Math.max(
+        margin,
+        window.innerHeight - rect.height - margin
+    );
+
+    let x;
+    let y;
+
+    // Previous position se kaafi different position choose karo
+    const oldX = parseFloat(button.dataset.runX || "-9999");
+    const oldY = parseFloat(button.dataset.runY || "-9999");
+
+    for (let i = 0; i < 15; i++) {
+        x = margin + Math.random() * Math.max(1, maxX - margin);
+        y = margin + Math.random() * Math.max(1, maxY - margin);
+
+        if (Math.hypot(x - oldX, y - oldY) > 100) {
+            break;
+        }
+    }
+
+    button.dataset.runX = x;
+    button.dataset.runY = y;
+
+    button.classList.add("runaway-active");
+
+    button.style.position = "fixed";
+    button.style.left = `${x}px`;
+    button.style.top = `${y}px`;
+    button.style.zIndex = "99999";
+    button.style.margin = "0";
+}
+
+
+/* Negative button attempt */
+function runawayAttempt(button) {
+    if (!button) return;
+
+    const now = Date.now();
+    const lastAttempt = Number(button.dataset.lastRun || 0);
+
+    // Too many events ek sath trigger na hon
+    if (now - lastAttempt < 250) return;
+
+    button.dataset.lastRun = now;
+
+    const type = button.dataset.noResponse;
+
+    if (type && typeof showNoResponse === "function") {
+        showNoResponse(type);
+    }
+
+    moveRunawayButton(button);
+}
+
+
+/* =========================================================
+   ALL NEGATIVE BUTTONS
+========================================================= */
+
+document.querySelectorAll("[data-no-response]").forEach(button => {
+
+    
+    // Mobile / touch
+    button.addEventListener("touchstart", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        runawayAttempt(button);
+    }, { passive: false });
+
+    // Agar phir bhi click ho jaye
+    button.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        runawayAttempt(button);
+    });
+});
+
+
+/* =========================================================
+   BIRTHDAY INTRO — SKIP BUTTON
+   Is button ko bhi runaway banana hai
+========================================================= */
+
+const skipIntroBtn = document.getElementById("skipIntroBtn");
+
+if (skipIntroBtn) {
+
+    // Isko video type assign karo
+    skipIntroBtn.dataset.noResponse = "video";
+
+ 
+    skipIntroBtn.addEventListener("touchstart", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        runawayAttempt(skipIntroBtn);
+    }, { passive: false });
+
+    skipIntroBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        runawayAttempt(skipIntroBtn);
+    });
+}
+
+
+/* =========================================================
+   SCENE CHANGE PAR BUTTON RESET
+========================================================= */
+
+function resetRunawayButtons() {
+
+    document.querySelectorAll(".runaway-active").forEach(button => {
+
+        button.classList.remove("runaway-active");
+
+        button.style.position = "";
+        button.style.left = "";
+        button.style.top = "";
+        button.style.zIndex = "";
+        button.style.margin = "";
+
+        delete button.dataset.runX;
+        delete button.dataset.runY;
+        delete button.dataset.lastRun;
+    });
+}
 
     /* =====================================================
        BUTTON SHAKE
@@ -717,8 +884,6 @@ ALL YES BUTTONS
     const watchIntroBtn =
         document.getElementById("watchIntroBtn");
 
-    const skipIntroBtn =
-        document.getElementById("skipIntroBtn");
 
     function finishBirthdayIntro() {
 
@@ -754,12 +919,11 @@ ALL YES BUTTONS
         }
     );
 
-    skipIntroBtn?.addEventListener(
-        "click",
-        () => {
-            finishBirthdayIntro();
-        }
-    );
+    skipIntroBtn?.addEventListener("click", (event) => {
+     event.preventDefault();
+     event.stopImmediatePropagation();
+     runawayAttempt(skipIntroBtn);
+    });
 
     if (birthdayIntroVideo) {
 
