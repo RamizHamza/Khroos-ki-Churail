@@ -79,62 +79,61 @@
     </audio>
 
 
-    <!-- =====================================================
-         MAIN APP
-    ====================================================== -->
+<!-- =====================================================
+MAIN APP
+====================================================== -->
 
-    <main id="app">
+<main id="app">
 
 
-        <!-- =================================================
-             SCENE 00 — INTRO
-        ================================================== -->
+<!-- =================================================
+SCENE 00 — INTRO
+================================================== -->
 
-        <section
-            class="scene active"
-            id="scene-intro"
-            data-scene="intro"
+<section
+ class="scene active"
+ id="scene-intro"
+ data-scene="intro"
+>
+
+    <div class="intro-content">
+
+        <div class="intro-logo">
+            <span>RL</span>
+        </div>
+
+        <p class="eyebrow">
+            PRESENTS
+        </p>
+
+        <h1 class="intro-title">
+            Something
+            <span>Special</span>
+        </h1>
+
+        <p class="intro-subtitle">
+            is being prepared...
+        </p>
+
+        <div class="loading-line">
+            <div id="loadingProgress"></div>
+        </div>
+
+        <p
+         id="loadingText"
+        class="loading-text"
         >
+         Preparing something unforgettable...
+        </p>
 
-            <div class="intro-content">
+    </div>
 
-                <div class="intro-logo">
-                    <span>RL</span>
-                </div>
-
-                <p class="eyebrow">
-                    PRESENTS
-                </p>
-
-                <h1 class="intro-title">
-                    Something
-                    <span>Special</span>
-                </h1>
-
-                <p class="intro-subtitle">
-                    is being prepared...
-                </p>
-
-                <div class="loading-line">
-                    <div id="loadingProgress"></div>
-                </div>
-
-                <p
-                    id="loadingText"
-                    class="loading-text"
-                >
-                    Preparing something unforgettable...
-                </p>
-
-            </div>
-
-        </section>
+</section>
 
 
-        <!-- =================================================
-             SCENE 01 — PASSWORD
-        ================================================== -->
-
+<!-- =================================================
+SCENE 01 — PASSWORD
+================================================== -->
         <section
             class="scene"
             id="scene-password"
@@ -221,10 +220,85 @@
 
         </section>
 
+<!-- =================================================
+     SCENE — FORGOT PASSWORD
+================================================== -->
 
-        <!-- =================================================
-             SCENE 02 — IDENTITY CHECK
-        ================================================== -->
+<section
+    class="scene"
+    id="scene-forgot-password"
+    data-scene="forgot-password"
+>
+
+    <div class="scene-card">
+
+        <div class="lock-icon">
+            🔐
+        </div>
+
+        <p class="eyebrow">
+            PASSWORD RECOVERY
+        </p>
+
+        <h2>
+            Enter Your Name
+        </h2>
+
+        <p class="scene-description">
+            Maybe this will help you remember... 👀
+        </p>
+
+        <div class="password-box">
+
+            <input
+                type="text"
+                id="forgotNameInput"
+                placeholder="Enter your name"
+                autocomplete="off"
+                maxlength="30"
+            >
+
+        </div>
+
+        <button
+            class="primary-btn"
+            id="forgotNextBtn"
+            type="button"
+        >
+            <span>Next</span>
+            <span>→</span>
+        </button>
+
+        <button
+          class="choice-btn no-btn"
+          id="forgotBackBtn"
+          type="button"
+          style="margin-top: 15px;"
+        >
+          ← Back to Password
+        </button>
+
+        <p
+            class="feedback-message"
+            id="forgotFeedback"
+        ></p>
+
+        <div
+            class="hint-box"
+            id="passwordReveal"
+        >
+            🔑 Your Password:
+            <strong id="revealedPassword"></strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+SCENE 02 — IDENTITY CHECK
+================================================== -->
 
         <section
             class="scene"
@@ -940,7 +1014,7 @@ SCENE 05 — BIRTHDAY MESSAGE
                 </p>
 
                 <h2>
-                    One Wish.
+                    One Wish,
                     One Beautiful Year.
                 </h2>
 
