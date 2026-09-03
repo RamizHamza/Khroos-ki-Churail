@@ -4123,3 +4123,622 @@ video {
     display: none !important; /* Video chalte waqt Text aur Watch/Skip buttons hide ho jayenge */
 }
 
+
+/* =========================================================
+   RL CINEMATIC PREMIUM COUPLE
+   ISOLATED BACKGROUND EFFECT
+========================================================= */
+
+#rl-cinematic-couple {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+    overflow: hidden;
+
+    z-index: 1;
+
+    opacity: .82;
+}
+
+
+/* =========================
+   COUPLE POSITION
+========================= */
+
+.rl-cinematic-svg {
+    position: absolute;
+
+    width: min(720px, 72vw);
+    height: auto;
+
+    right: -1%;
+    bottom: -5%;
+
+    overflow: visible;
+
+    filter:
+        drop-shadow(0 0 18px rgba(50, 130, 255, .16));
+}
+
+
+/* =========================
+   GIRL
+========================= */
+
+.rl-girl-body {
+    fill: url(#rlLuxuryGold);
+    opacity: .72;
+
+    filter:
+        drop-shadow(0 0 18px rgba(214, 179, 106, .28));
+}
+
+.rl-girl-dress {
+    fill: #101d35;
+
+    stroke: url(#rlLuxuryGold);
+    stroke-width: 2;
+
+    opacity: .94;
+
+    filter:
+        drop-shadow(0 0 15px rgba(214, 179, 106, .20));
+}
+
+.rl-girl-hair {
+    fill: #07101f;
+
+    stroke: rgba(214, 179, 106, .7);
+    stroke-width: 2;
+}
+
+.rl-girl-line,
+.rl-girl-arm,
+.rl-girl-leg {
+    fill: none;
+
+    stroke: url(#rlLuxuryGold);
+
+    stroke-width: 7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    filter:
+        drop-shadow(0 0 8px rgba(214, 179, 106, .3));
+}
+
+.rl-girl-highlight {
+    fill: none;
+
+    stroke: rgba(255, 239, 194, .28);
+    stroke-width: 5;
+
+    stroke-linecap: round;
+}
+
+
+/* =========================
+   BOY
+========================= */
+
+.rl-boy-body {
+    fill: url(#rlLuxuryBlue);
+
+    opacity: .78;
+
+    filter:
+        drop-shadow(0 0 18px rgba(66, 153, 255, .35));
+}
+
+.rl-boy-jacket {
+    fill: #071326;
+
+    stroke: url(#rlLuxuryBlue);
+    stroke-width: 2;
+
+    opacity: .96;
+
+    filter:
+        drop-shadow(0 0 16px rgba(66, 153, 255, .28));
+}
+
+.rl-boy-hair {
+    fill: #020711;
+
+    stroke: rgba(100, 174, 255, .45);
+    stroke-width: 2;
+}
+
+.rl-boy-line,
+.rl-boy-arm,
+.rl-boy-leg {
+    fill: none;
+
+    stroke: url(#rlLuxuryBlue);
+
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    filter:
+        drop-shadow(0 0 9px rgba(70, 160, 255, .35));
+}
+
+.rl-boy-highlight {
+    fill: none;
+
+    stroke: rgba(180, 225, 255, .18);
+
+    stroke-width: 5;
+    stroke-linecap: round;
+}
+
+.rl-shoe {
+    fill: none;
+
+    stroke: #7dc4ff;
+    stroke-width: 8;
+
+    stroke-linecap: round;
+}
+
+
+/* =========================
+   GIRL BALANCE MOVEMENT
+========================= */
+
+#rl-girl {
+
+    transform-box: fill-box;
+    transform-origin: center bottom;
+
+    animation:
+        rlGirlCinematicBalance 8s
+        cubic-bezier(.45, 0, .25, 1)
+        infinite;
+}
+
+
+/* =========================
+   BOY SUPPORT MOVEMENT
+========================= */
+
+#rl-boy {
+
+    transform-box: fill-box;
+    transform-origin: center bottom;
+
+    animation:
+        rlBoyCinematicSupport 8s
+        cubic-bezier(.45, 0, .25, 1)
+        infinite;
+}
+
+
+/* =========================
+   SUPPORT ARM
+========================= */
+
+#rl-support-arm {
+
+    transform-box: fill-box;
+    transform-origin: left center;
+
+    animation:
+        rlSupportCinematic 8s
+        cubic-bezier(.45, 0, .25, 1)
+        infinite;
+}
+
+
+/* =========================
+   CINEMATIC GIRL MOVEMENT
+========================= */
+
+@keyframes rlGirlCinematicBalance {
+
+    0%,
+    100% {
+        transform:
+            rotate(0deg)
+            translate3d(0, 0, 0);
+    }
+
+    25% {
+        transform:
+            rotate(-1deg)
+            translate3d(-3px, 1px, 0);
+    }
+
+    43% {
+        transform:
+            rotate(-5deg)
+            translate3d(-9px, 4px, 0);
+    }
+
+    52% {
+        transform:
+            rotate(-7deg)
+            translate3d(-12px, 7px, 0);
+    }
+
+    62% {
+        transform:
+            rotate(-2deg)
+            translate3d(-3px, 2px, 0);
+    }
+
+    78% {
+        transform:
+            rotate(1deg)
+            translate3d(2px, 0, 0);
+    }
+}
+
+
+/* =========================
+   BOY REACTION
+========================= */
+
+@keyframes rlBoyCinematicSupport {
+
+    0%,
+    100% {
+        transform:
+            translate3d(0, 0, 0);
+    }
+
+    40% {
+        transform:
+            translate3d(-2px, 0, 0);
+    }
+
+    52% {
+        transform:
+            translate3d(-7px, 1px, 0);
+    }
+
+    65% {
+        transform:
+            translate3d(-3px, 0, 0);
+    }
+}
+
+
+/* =========================
+   ARM SUPPORT
+========================= */
+
+@keyframes rlSupportCinematic {
+
+    0%,
+    100% {
+        transform:
+            rotate(0deg);
+    }
+
+    42% {
+        transform:
+            rotate(-2deg);
+    }
+
+    53% {
+        transform:
+            rotate(-6deg);
+    }
+
+    65% {
+        transform:
+            rotate(-2deg);
+    }
+}
+
+
+/* =========================
+   FLOOR LIGHT
+========================= */
+
+.rl-floor-light {
+
+    transform-box: fill-box;
+    transform-origin: center;
+
+    animation:
+        rlFloorBreath 8s ease-in-out infinite;
+
+    filter:
+        blur(8px);
+}
+
+
+/* =========================
+   CINEMATIC LIGHTS
+========================= */
+
+.rl-couple-light {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(70px);
+
+    pointer-events: none;
+}
+
+.rl-light-one {
+
+    width: 260px;
+    height: 260px;
+
+    right: 12%;
+    bottom: 8%;
+
+    background:
+        rgba(214, 179, 106, .08);
+
+    animation:
+        rlLightFloat 10s ease-in-out infinite alternate;
+}
+
+.rl-light-two {
+
+    width: 220px;
+    height: 220px;
+
+    right: 35%;
+    bottom: 30%;
+
+    background:
+        rgba(44, 126, 255, .08);
+
+    animation:
+        rlLightFloat 13s ease-in-out infinite alternate-reverse;
+}
+
+.rl-light-three {
+
+    width: 160px;
+    height: 160px;
+
+    right: 5%;
+    top: 25%;
+
+    background:
+        rgba(255, 220, 150, .05);
+
+    animation:
+        rlLightFloat 9s ease-in-out infinite alternate;
+}
+
+
+/* =========================
+   BOKEH
+========================= */
+
+.rl-couple-bokeh {
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.rl-couple-bokeh span {
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 223, 157, .65);
+
+    box-shadow:
+        0 0 15px rgba(255, 211, 130, .45);
+
+    animation:
+        rlBokehFloat 7s ease-in-out infinite;
+}
+
+.rl-couple-bokeh span:nth-child(1) {
+    right: 24%;
+    bottom: 37%;
+    animation-delay: -1s;
+}
+
+.rl-couple-bokeh span:nth-child(2) {
+    right: 43%;
+    bottom: 52%;
+    width: 4px;
+    height: 4px;
+    animation-delay: -3s;
+}
+
+.rl-couple-bokeh span:nth-child(3) {
+    right: 12%;
+    bottom: 58%;
+    width: 5px;
+    height: 5px;
+    animation-delay: -5s;
+}
+
+.rl-couple-bokeh span:nth-child(4) {
+    right: 52%;
+    bottom: 25%;
+    width: 4px;
+    height: 4px;
+    animation-delay: -2s;
+}
+
+.rl-couple-bokeh span:nth-child(5) {
+    right: 30%;
+    bottom: 65%;
+    width: 6px;
+    height: 6px;
+    animation-delay: -6s;
+}
+
+.rl-couple-bokeh span:nth-child(6) {
+    right: 8%;
+    bottom: 44%;
+    width: 4px;
+    height: 4px;
+    animation-delay: -4s;
+}
+
+.rl-couple-bokeh span:nth-child(7) {
+    right: 48%;
+    bottom: 70%;
+    width: 3px;
+    height: 3px;
+}
+
+.rl-couple-bokeh span:nth-child(8) {
+    right: 20%;
+    bottom: 72%;
+    width: 5px;
+    height: 5px;
+    animation-delay: -7s;
+}
+
+
+/* =========================
+   FLOATING LIGHT POINTS
+========================= */
+
+.rl-floating-points circle {
+
+    fill: #ffffff;
+
+    opacity: .45;
+
+    filter:
+        drop-shadow(0 0 7px rgba(255, 255, 255, .7));
+
+    animation:
+        rlPointPulse 4s ease-in-out infinite;
+}
+
+.rl-floating-points circle:nth-child(2) {
+    animation-delay: -1s;
+}
+
+.rl-floating-points circle:nth-child(3) {
+    animation-delay: -2s;
+}
+
+.rl-floating-points circle:nth-child(4) {
+    animation-delay: -3s;
+}
+
+
+/* =========================
+   KEYFRAMES
+========================= */
+
+@keyframes rlFloorBreath {
+
+    0%,
+    100% {
+        opacity: .35;
+        transform: scaleX(.9);
+    }
+
+    50% {
+        opacity: .7;
+        transform: scaleX(1.05);
+    }
+}
+
+@keyframes rlLightFloat {
+
+    0% {
+        transform:
+            translate3d(-20px, 15px, 0)
+            scale(.9);
+    }
+
+    100% {
+        transform:
+            translate3d(25px, -25px, 0)
+            scale(1.12);
+    }
+}
+
+@keyframes rlBokehFloat {
+
+    0%,
+    100% {
+        opacity: .15;
+        transform:
+            translate3d(0, 15px, 0)
+            scale(.7);
+    }
+
+    50% {
+        opacity: .75;
+        transform:
+            translate3d(-10px, -25px, 0)
+            scale(1.35);
+    }
+}
+
+@keyframes rlPointPulse {
+
+    0%,
+    100% {
+        opacity: .15;
+        transform: scale(.6);
+    }
+
+    50% {
+        opacity: .85;
+        transform: scale(1.5);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    #rl-cinematic-couple {
+        opacity: .48;
+    }
+
+    .rl-cinematic-svg {
+
+        width: 430px;
+        max-width: 105vw;
+
+        right: -18%;
+        bottom: -2%;
+    }
+
+    .rl-couple-light {
+        filter: blur(55px);
+    }
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #rl-girl,
+    #rl-boy,
+    #rl-support-arm,
+    .rl-floor-light,
+    .rl-couple-light,
+    .rl-couple-bokeh span,
+    .rl-floating-points circle {
+        animation: none;
+    }
+}
