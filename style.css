@@ -555,7 +555,7 @@ h2 {
 
     width: min(580px, 94vw);
 
-    max-height: 90vh;
+    max-height: auto;
 
     overflow: hidden;
 
@@ -590,7 +590,7 @@ h2 {
     position: absolute;
 
     width: 180px;
-    height: 180px;
+    height: auto;
 
     top: -90px;
     right: -70px;
@@ -2807,7 +2807,7 @@ h2 {
     top: -20px;
 
     width: 8px;
-    height: auto;
+    height: auto;    
 
     animation:
         confettiFall linear forwards;
