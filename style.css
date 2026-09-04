@@ -4828,3 +4828,47 @@ video {
     height: auto !important;
     padding-bottom: 25px !important;
 }
+
+.scene-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* Card Box Background Removal */
+.scene-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 400px !important;
+}
+
+/* Screen Alignment & Footer Protection Gap */
+.scene {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    min-height: 100vh !important;
+    padding-top: 60px !important;       /* Top se jagah */
+    padding-bottom: 120px !important;   /* Text aur footer ke beech safety gap */
+    box-sizing: border-box !important;
+}
+
+/* Footer position spacing */
+footer, .footer {
+    position: relative !important;
+    margin-top: auto !important;
+    padding: 15px 0 !important;
+    z-index: 10 !important;
+}
+
