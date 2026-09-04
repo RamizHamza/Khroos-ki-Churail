@@ -2807,7 +2807,7 @@ h2 {
     top: -20px;
 
     width: 8px;
-    height: 14px;
+    height: auto;
 
     animation:
         confettiFall linear forwards;
