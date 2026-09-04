@@ -90,35 +90,72 @@ video {
 #background {
     position: fixed;
     inset: 0;
-
     overflow: hidden;
     pointer-events: none;
     z-index: 0;
 
     background:
-        radial-gradient(
-            circle at 50% 15%,
-            rgba(38, 105, 190, 0.30),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 10% 85%,
-            rgba(214, 179, 106, 0.13),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 90% 70%,
-            rgba(20, 76, 150, 0.22),
-            transparent 38%
-        ),
         linear-gradient(
-            135deg,
-            #020817 0%,
-            #06152d 48%,
-            #020b1d 100%
-        );
+            90deg,
+            rgba(1, 8, 25, 0.92),
+            rgba(2, 15, 40, 0.55),
+            rgba(1, 8, 25, 0.88)
+        ),
+        url("couple-bg.png") center center / cover no-repeat;
+
+    background-color: #020817;
 }
 
+/* Golden cinematic glow */
+#background::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 48%,
+            rgba(255, 190, 70, 0.28),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(255, 210, 100, 0.18),
+            transparent 25%
+        );
+
+    mix-blend-mode: screen;
+    animation: cinematicGlow 7s ease-in-out infinite alternate;
+}
+
+/* Soft premium dark overlay */
+#background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 5, 18, 0.25),
+            rgba(0, 5, 18, 0.05) 45%,
+            rgba(0, 5, 18, 0.55)
+        );
+
+    pointer-events: none;
+}
+
+@keyframes cinematicGlow {
+    from {
+        opacity: .65;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+}
 
 /* =========================
    AURORA
@@ -4741,4 +4778,33 @@ video {
     .rl-floating-points circle {
         animation: none;
     }
+}
+
+/* ===== COUPLE BACKGROUND ===== */
+
+#background {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+
+    background-image: url("./couple-bg.png") !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+
+    overflow: hidden !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+/* Purana aurora hide */
+#background .aurora {
+    display: none !important;
+}
+
+/* Stars/particles halka */
+#stars,
+#particles {
+    opacity: 0.3;
 }
