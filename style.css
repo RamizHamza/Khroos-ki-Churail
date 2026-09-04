@@ -4808,3 +4808,23 @@ video {
 #particles {
     opacity: 0.3;
 }
+
+/* Password Reveal Box Fix */
+#passwordReveal {
+    margin-top: 15px !important;
+    margin-bottom: 10px !important;
+    position: relative !important;
+    bottom: auto !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Card container gap fix */
+#scene-forgot-password .scene-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    height: auto !important;
+    padding-bottom: 25px !important;
+}
