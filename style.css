@@ -1418,7 +1418,7 @@ h2 {
 
     position: relative;
 
-    width: min(390px, 45vw);
+    width: min(450px, 85vw);
 
     aspect-ratio: 4 / 5;
 
